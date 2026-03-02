@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Maison QUasar</title>
+  <title>Maison Quasar</title>
   <link rel="icon" type="image/png" href="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,10 +15,6 @@
       padding: 0;
     }
 
-    html, body {
-      height: 100%;
-    }
-
     body {
       background-color: #000;
       color: #fff;
@@ -26,9 +22,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
-      padding: 40px 20px;
+      /* laisse de la place pour la barre fixe en bas */
+      padding: 48px 20px 130px;
     }
 
     /* ── Hero ── */
@@ -41,14 +37,123 @@
     }
 
     .hero__logo {
-      width: min(560px, 88vw);
+      width: min(520px, 85vw);
       height: auto;
     }
 
-    .hero__cta {
+    /* ── En-tête section événements ── */
+    .events {
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      width: 100%;
+    }
+
+    .events__header {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .events__title {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .events__grid {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      width: 100%;
+      padding: 0 8px;
+    }
+
+    /* ── Cards événement ── */
+    .event-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+      max-width: 340px;
+      min-width: 140px;
+    }
+
+    .event-card__img-wrap {
+      display: block;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .event-card__img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    .event-card__img-wrap:hover img {
+      opacity: 0.75;
+    }
+
+    .event-card__info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      text-align: center;
+    }
+
+    .event-card__name {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .event-card__meta {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    /* ── Barre fixe en bas ── */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px 16px;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 100;
+    }
+
+    .bottom-bar__mention {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .bottom-bar__btns {
+      display: flex;
+      gap: 16px;
       flex-wrap: wrap;
-      gap: 20px;
       justify-content: center;
     }
 
@@ -56,12 +161,12 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 14px 32px;
+      padding: 12px 28px;
       border: 1px solid rgba(255, 255, 255, 0.7);
       background: transparent;
       color: #fff;
       font-family: 'Inter', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -82,39 +187,66 @@
       flex-shrink: 0;
     }
 
-    /* ── Mention ── */
-    .mention {
-      margin-top: 52px;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.35);
-    }
-
-    /* ── Q logo fixé en bas à droite ── */
+    /* ── Q logo fixé en bas à droite (au-dessus de la barre) ── */
     .q-logo {
       position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 48px;
+      bottom: 110px;
+      right: 24px;
+      width: 40px;
       height: auto;
-      opacity: 0.6;
+      opacity: 0.5;
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero -->
   <section class="hero">
+
+    <!-- Logo principal -->
     <img
       class="hero__logo"
-      src="Logos/MAISON_QUASAR_TXT_WHITE_LOGO.png"
-      alt="Maison QUasar"
+      src="Logos/MAISON%20QUASAR%20TEXT%20LOGO%202%2002.png"
+      alt="Maison Quasar"
     />
 
-    <div class="hero__cta">
-      <!-- Instagram -->
+    <!-- Nos prochains événements -->
+    <div class="events">
+      <div class="events__header">
+        <p class="events__title">Nos prochains événements</p>
+      </div>
+      <div class="events__grid">
+
+        <!-- Cuisine 19 -->
+        <div class="event-card">
+          <a class="event-card__img-wrap" href="https://shotgun.live/fr/events/cuisine-19-5-speciale-lancement-cynosure" target="_blank" rel="noopener noreferrer">
+            <img src="Affiches/cuisine_19.png" alt="Cuisine 19 #5" />
+          </a>
+          <div class="event-card__info">
+            <p class="event-card__name">Cuisine 19 #5</p>
+            <p class="event-card__meta">6 Mars 2026 &nbsp;·&nbsp; TDTF Paris, Paris 19</p>
+          </div>
+        </div>
+
+        <!-- Release Party -->
+        <div class="event-card">
+          <a class="event-card__img-wrap" href="https://shotgun.live/fr/events/quasar-sessions" target="_blank" rel="noopener noreferrer">
+            <img src="Affiches/release_party.jpg" alt="Quasar Sessions – Release Party" />
+          </a>
+          <div class="event-card__info">
+            <p class="event-card__name">Quasar Sessions – Release Party</p>
+            <p class="event-card__meta">19 Mars 2026 &nbsp;·&nbsp; Punk Paradise, Paris 11</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Barre fixe en bas -->
+  <div class="bottom-bar">
+    <p class="bottom-bar__mention">Site bientôt disponible ..</p>
+    <div class="bottom-bar__btns">
       <a
         class="btn"
         href="https://www.instagram.com/maisonquasar"
@@ -122,16 +254,13 @@
         rel="noopener noreferrer"
         aria-label="Suivez-nous sur Instagram"
       >
-        <!-- Instagram SVG icon -->
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
           <circle cx="12" cy="12" r="4"/>
           <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
         </svg>
         Instagram
       </a>
-
-      <!-- Réservation -->
       <a
         class="btn"
         href="https://3s-studios.setmore.com/"
@@ -141,11 +270,9 @@
         Réserve ta session
       </a>
     </div>
+  </div>
 
-    <p class="mention">Site bientôt disponible ..</p>
-  </section>
-
-  <!-- Q logo fixé en bas à droite -->
+  <!-- Q logo au-dessus de la barre -->
   <img
     class="q-logo"
     src="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png"
