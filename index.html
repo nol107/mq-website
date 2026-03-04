@@ -124,6 +124,45 @@
       color: rgba(255, 255, 255, 0.45);
     }
 
+    /* ── Section vidéo ── */
+    .video-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      width: 100%;
+    }
+
+    .video-section__header {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .video-section__title {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .video-wrapper {
+      width: 100%;
+      max-width: 700px;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+    }
+
     /* ── Barre fixe en bas ── */
     .bottom-bar {
       position: fixed;
@@ -238,6 +277,21 @@
           </div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- Quasar Session #1 -->
+    <div class="video-section">
+      <div class="video-section__header">
+        <p class="video-section__title">Quasar Session #1 &nbsp;|&nbsp; Kun – Ville</p>
+      </div>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/_JqxBcffCbM"
+          title="Quasar Session #1 | Kun - Ville"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
 
