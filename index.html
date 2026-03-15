@@ -23,7 +23,6 @@
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      /* laisse de la place pour la barre fixe en bas */
       padding: 48px 20px 130px;
     }
 
@@ -39,6 +38,71 @@
     .hero__logo {
       width: min(520px, 85vw);
       height: auto;
+    }
+
+    /* ── Countdown ── */
+    .countdown-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      padding: 28px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .countdown-section__label {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .countdown-section__title {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.92);
+      text-align: center;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .countdown__unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .countdown__number {
+      font-size: 38px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: #fff;
+      min-width: 56px;
+      text-align: center;
+    }
+
+    .countdown__label {
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .countdown--expired .countdown__number {
+      color: rgba(255, 255, 255, 0.4);
     }
 
     /* ── En-tête section événements ── */
@@ -248,23 +312,36 @@
       alt="Maison Quasar"
     />
 
+    <!-- Décompte EP -->
+    <div class="countdown-section">
+      <p class="countdown-section__label">Sortie dans</p>
+      <p class="countdown-section__title">EP &ldquo;Quasar Sessions&rdquo;</p>
+      <div class="countdown" id="countdown">
+        <div class="countdown__unit">
+          <span class="countdown__number" id="cd-days">--</span>
+          <span class="countdown__label">Jours</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__number" id="cd-hours">--</span>
+          <span class="countdown__label">Heures</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__number" id="cd-minutes">--</span>
+          <span class="countdown__label">Minutes</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__number" id="cd-seconds">--</span>
+          <span class="countdown__label">Secondes</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Nos prochains événements -->
     <div class="events">
       <div class="events__header">
         <p class="events__title">Nos prochains événements</p>
       </div>
       <div class="events__grid">
-
-        <!-- Cuisine 19 -->
-        <div class="event-card">
-          <a class="event-card__img-wrap" href="https://shotgun.live/fr/events/cuisine-19-5-speciale-lancement-cynosure" target="_blank" rel="noopener noreferrer">
-            <img src="Affiches/cuisine_19.png" alt="Cuisine 19 #5" />
-          </a>
-          <div class="event-card__info">
-            <p class="event-card__name">Cuisine 19 #5</p>
-            <p class="event-card__meta">6 Mars 2026 &nbsp;·&nbsp; TDTF Paris, Paris 19</p>
-          </div>
-        </div>
 
         <!-- Release Party -->
         <div class="event-card">
@@ -277,6 +354,21 @@
           </div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- Quasar Session #2 -->
+    <div class="video-section">
+      <div class="video-section__header">
+        <p class="video-section__title">Quasar Session #2 &nbsp;|&nbsp; Jeunedoomer – Casino Afghan</p>
+      </div>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/W-P07hYIffM"
+          title="Quasar Session #2 | Jeunedoomer - Casino Afghan"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
 
@@ -333,6 +425,43 @@
     alt=""
     aria-hidden="true"
   />
+
+  <script>
+    // EP release : 18 mars 2026 à 18h00 heure de Paris (CET = UTC+1)
+    var target = new Date('2026-03-18T18:00:00+01:00');
+
+    function pad(n) {
+      return String(n).padStart(2, '0');
+    }
+
+    function tick() {
+      var now = new Date();
+      var diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent    = '00';
+        document.getElementById('cd-hours').textContent   = '00';
+        document.getElementById('cd-minutes').textContent = '00';
+        document.getElementById('cd-seconds').textContent = '00';
+        document.getElementById('countdown').classList.add('countdown--expired');
+        document.querySelector('.countdown-section__label').textContent = 'Disponible maintenant';
+        return;
+      }
+
+      var days    = Math.floor(diff / 86400000);
+      var hours   = Math.floor((diff % 86400000) / 3600000);
+      var minutes = Math.floor((diff % 3600000) / 60000);
+      var seconds = Math.floor((diff % 60000) / 1000);
+
+      document.getElementById('cd-days').textContent    = pad(days);
+      document.getElementById('cd-hours').textContent   = pad(hours);
+      document.getElementById('cd-minutes').textContent = pad(minutes);
+      document.getElementById('cd-seconds').textContent = pad(seconds);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  </script>
 
 </body>
 </html>
