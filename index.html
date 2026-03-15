@@ -52,14 +52,6 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    .countdown-section__label {
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.4);
-    }
-
     .countdown-section__title {
       font-size: 13px;
       font-weight: 500;
@@ -105,8 +97,8 @@
       color: rgba(255, 255, 255, 0.4);
     }
 
-    /* ── En-tête section événements ── */
-    .events {
+    /* ── Release Party ── */
+    .release {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -114,14 +106,14 @@
       width: 100%;
     }
 
-    .events__header {
+    .release__header {
       width: 100%;
       text-align: center;
       padding-bottom: 14px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     }
 
-    .events__title {
+    .release__label {
       font-size: 11px;
       font-weight: 400;
       letter-spacing: 0.26em;
@@ -129,63 +121,94 @@
       color: rgba(255, 255, 255, 0.8);
     }
 
-    .events__grid {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      width: 100%;
-      padding: 0 8px;
-    }
-
-    /* ── Cards événement ── */
-    .event-card {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex: 1;
-      max-width: 340px;
-      min-width: 140px;
-    }
-
-    .event-card__img-wrap {
+    .release__poster {
       display: block;
-      width: 100%;
+      width: min(340px, 85vw);
       border-radius: 10px;
       overflow: hidden;
-      cursor: pointer;
     }
 
-    .event-card__img-wrap img {
+    .release__poster img {
       width: 100%;
       height: auto;
       display: block;
       transition: opacity 0.3s ease;
     }
 
-    .event-card__img-wrap:hover img {
-      opacity: 0.75;
+    .release__poster:hover img {
+      opacity: 0.8;
     }
 
-    .event-card__info {
+    .release__info {
       display: flex;
       flex-direction: column;
-      gap: 5px;
-      text-align: center;
+      align-items: center;
+      gap: 6px;
     }
 
-    .event-card__name {
-      font-size: 11px;
+    .release__name {
+      font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.92);
     }
 
-    .event-card__meta {
+    .release__meta {
       font-size: 10px;
       font-weight: 300;
-      letter-spacing: 0.06em;
-      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .release__btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* ── Boutons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: transparent;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+      outline: none;
+    }
+
+    .btn--ghost {
+      border-color: rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .btn--ghost:hover,
+    .btn--ghost:focus-visible {
+      border-color: #fff;
+      background: transparent;
+      color: #fff;
+    }
+
+    .btn svg {
+      flex-shrink: 0;
     }
 
     /* ── Section vidéo ── */
@@ -260,37 +283,7 @@
       justify-content: center;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 28px;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      background: transparent;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-    }
-
-    .btn:hover,
-    .btn:focus-visible {
-      background: #fff;
-      color: #000;
-      border-color: #fff;
-      outline: none;
-    }
-
-    .btn svg {
-      flex-shrink: 0;
-    }
-
-    /* ── Q logo fixé en bas à droite (au-dessus de la barre) ── */
+    /* ── Q logo fixé en bas à droite ── */
     .q-logo {
       position: fixed;
       bottom: 110px;
@@ -314,7 +307,6 @@
 
     <!-- Décompte EP -->
     <div class="countdown-section">
-      <p class="countdown-section__label">Sortie dans</p>
       <p class="countdown-section__title">EP &ldquo;Quasar Sessions&rdquo;</p>
       <div class="countdown" id="countdown">
         <div class="countdown__unit">
@@ -336,24 +328,25 @@
       </div>
     </div>
 
-    <!-- Nos prochains événements -->
-    <div class="events">
-      <div class="events__header">
-        <p class="events__title">Nos prochains événements</p>
+    <!-- Release Party -->
+    <div class="release">
+      <div class="release__header">
+        <p class="release__label">Release Party</p>
       </div>
-      <div class="events__grid">
-
-        <!-- Release Party -->
-        <div class="event-card">
-          <a class="event-card__img-wrap" href="https://shotgun.live/fr/events/quasar-sessions" target="_blank" rel="noopener noreferrer">
-            <img src="Affiches/release_party.jpg" alt="Quasar Sessions – Release Party" />
-          </a>
-          <div class="event-card__info">
-            <p class="event-card__name">Quasar Sessions – Release Party</p>
-            <p class="event-card__meta">19 Mars 2026 &nbsp;·&nbsp; Punk Paradise, Paris 11</p>
-          </div>
-        </div>
-
+      <a class="release__poster" href="https://shotgun.live/fr/events/quasar-sessions" target="_blank" rel="noopener noreferrer">
+        <img src="Affiches/release_party.jpg" alt="Quasar Sessions – Release Party" />
+      </a>
+      <div class="release__info">
+        <p class="release__name">Quasar Sessions</p>
+        <p class="release__meta">19 Mars 2026 &nbsp;·&nbsp; Punk Paradise, Paris 11</p>
+      </div>
+      <div class="release__btns">
+        <a class="btn" href="https://shotgun.live/fr/events/quasar-sessions" target="_blank" rel="noopener noreferrer">
+          Réserve ta place
+        </a>
+        <a class="btn btn--ghost" href="artistes.html">
+          Découvre les artistes &nbsp;→
+        </a>
       </div>
     </div>
 
@@ -427,36 +420,24 @@
   />
 
   <script>
-    // EP release : 18 mars 2026 à 18h00 heure de Paris (CET = UTC+1)
     var target = new Date('2026-03-18T18:00:00+01:00');
 
-    function pad(n) {
-      return String(n).padStart(2, '0');
-    }
+    function pad(n) { return String(n).padStart(2, '0'); }
 
     function tick() {
-      var now = new Date();
-      var diff = target - now;
-
+      var diff = target - new Date();
       if (diff <= 0) {
-        document.getElementById('cd-days').textContent    = '00';
-        document.getElementById('cd-hours').textContent   = '00';
-        document.getElementById('cd-minutes').textContent = '00';
-        document.getElementById('cd-seconds').textContent = '00';
+        ['cd-days','cd-hours','cd-minutes','cd-seconds'].forEach(function(id) {
+          document.getElementById(id).textContent = '00';
+        });
         document.getElementById('countdown').classList.add('countdown--expired');
-        document.querySelector('.countdown-section__label').textContent = 'Disponible maintenant';
+        document.querySelector('.countdown-section__title').textContent = 'Disponible maintenant';
         return;
       }
-
-      var days    = Math.floor(diff / 86400000);
-      var hours   = Math.floor((diff % 86400000) / 3600000);
-      var minutes = Math.floor((diff % 3600000) / 60000);
-      var seconds = Math.floor((diff % 60000) / 1000);
-
-      document.getElementById('cd-days').textContent    = pad(days);
-      document.getElementById('cd-hours').textContent   = pad(hours);
-      document.getElementById('cd-minutes').textContent = pad(minutes);
-      document.getElementById('cd-seconds').textContent = pad(seconds);
+      document.getElementById('cd-days').textContent    = pad(Math.floor(diff / 86400000));
+      document.getElementById('cd-hours').textContent   = pad(Math.floor((diff % 86400000) / 3600000));
+      document.getElementById('cd-minutes').textContent = pad(Math.floor((diff % 3600000) / 60000));
+      document.getElementById('cd-seconds').textContent = pad(Math.floor((diff % 60000) / 1000));
     }
 
     tick();

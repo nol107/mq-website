@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artistes – Maison Quasar</title>
+  <link rel="icon" type="image/png" href="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding: 48px 20px 80px;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .nav__back {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav__back:hover { color: #fff; }
+
+    .nav__logo {
+      width: 26px;
+      opacity: 0.45;
+    }
+
+    /* ── Titre ── */
+    .page-header {
+      margin-bottom: 56px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .page-header__title {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── Groupe ── */
+    .group {
+      margin-bottom: 60px;
+    }
+
+    .group__header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .group__label {
+      font-size: 26px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .group__count {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── Scroll horizontal (Lives & DJ Sets) ── */
+    .cards-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      /* déborde légèrement des bords pour l'effet edge-to-edge */
+      margin: 0 -20px;
+      padding: 0 20px 10px;
+    }
+
+    .cards-scroll::-webkit-scrollbar { height: 2px; }
+    .cards-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); }
+    .cards-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+    /* ── Cards ── */
+    .artist-card {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      /* Mobile : 1 réel par écran */
+      width: calc(100vw - 40px);
+    }
+
+    /* Desktop : ~4 cards visibles (~30% plus petits que la grille 3 colonnes) */
+    @media (min-width: 600px) {
+      .artist-card {
+        width: clamp(140px, calc((100vw - 40px - 3 * 12px) / 4), 190px);
+      }
+    }
+
+    .artist-card__video {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .artist-card__video iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+    }
+
+    .artist-card__name {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="nav__back" href="index.html">← Retour</a>
+    <img class="nav__logo" src="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" alt="" aria-hidden="true" />
+  </nav>
+
+  <div class="page-header">
+    <p class="page-header__title">Les artistes de la release party</p>
+  </div>
+
+  <!-- Lives -->
+  <div class="group">
+    <div class="group__header">
+      <span class="group__label">Lives</span>
+      <span class="group__count">7 artistes</span>
+    </div>
+    <div class="cards-scroll">
+      <div class="artist-card">
+        <div class="artist-card__video"><iframe src="https://www.youtube.com/embed/EIoYPUzvEqA" title="Joha Wallas" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <p class="artist-card__name">Joha Wallas</p>
+      </div>
+      <div class="artist-card">
+        <div class="artist-card__video"><iframe src="https://www.youtube.com/embed/ShD854-rdU4" title="KUN" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <p class="artist-card__name">KUN</p>
+      </div>
+      <div class="artist-card">
+        <div class="artist-card__video"><iframe src="https://www.youtube.com/embed/kjOg4_mH-3Y" title="Jeunedoomer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <p class="artist-card__name">Jeunedoomer</p>
+      </div>
+      <div class="artist-card">
+        <div class="artist-card__video"><iframe src="https://www.youtube.com/embed/1jz2nwe_Nng" title="Ozaleji" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <p class="artist-card__name">Ozaleji</p>
+      </div>
+      <div class="artist-card">
+        <div class="artist-card__video"><iframe src="https://www.youtube.com/embed/bqEJJ0xnYuk" title="FcM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <p class="artist-card__name">FcM</p>
+      </div>
+      <div class="artist-card">
+        <div class="artist-card__video"><iframe src="https://www.youtube.com/embed/p7K1fFu0ZG4" title="Jaleb & 21corazon" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <p class="artist-card__name">Jaleb & 21corazon</p>
+      </div>
+      <div class="artist-card">
+        <div class="artist-card__video"><iframe src="https://www.youtube.com/embed/0_QC0iNjv9A" title="Odzie" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <p class="artist-card__name">Odzie</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DJ Sets -->
+  <div class="group">
+    <div class="group__header">
+      <span class="group__label">DJ Sets</span>
+      <span class="group__count">3 artistes</span>
+    </div>
+    <div class="cards-scroll">
+      <div class="artist-card">
+        <div class="artist-card__video"><iframe src="https://www.youtube.com/embed/mW3UaFBOOqA" title="Khalil" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <p class="artist-card__name">Khalil</p>
+      </div>
+      <div class="artist-card">
+        <div class="artist-card__video"><iframe src="https://www.youtube.com/embed/3yzIh-JgKeE" title="Deuzenn" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <p class="artist-card__name">Deuzenn</p>
+      </div>
+      <div class="artist-card">
+        <div class="artist-card__video"><iframe src="https://www.youtube.com/embed/DPjWZdvJw2A" title="Zoovie Kazuyoshi" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <p class="artist-card__name">Zoovie Kazuyoshi</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
