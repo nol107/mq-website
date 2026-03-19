@@ -60,8 +60,8 @@
       height: auto;
     }
 
-    /* ── Countdown ── */
-    .countdown-section {
+    /* ── EP dispo ── */
+    .ep-section {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -72,7 +72,7 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    .countdown-section__title {
+    .ep-section__title {
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 0.22em;
@@ -81,40 +81,12 @@
       text-align: center;
     }
 
-    .countdown {
-      display: flex;
-      gap: 32px;
-      align-items: flex-start;
-      justify-content: center;
-    }
-
-    .countdown__unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .countdown__number {
-      font-size: 38px;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      line-height: 1;
-      color: #fff;
-      min-width: 56px;
-      text-align: center;
-    }
-
-    .countdown__label {
-      font-size: 9px;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.35);
-    }
-
-    .countdown--expired .countdown__number {
-      color: rgba(255, 255, 255, 0.4);
+    .ep-section__iframe {
+      width: 100%;
+      max-width: 500px;
+      height: 480px;
+      border: none;
+      border-radius: 10px;
     }
 
     /* ── Release Party ── */
@@ -325,27 +297,15 @@
       alt="Maison Quasar"
     />
 
-    <!-- Décompte EP -->
-    <div class="countdown-section">
-      <p class="countdown-section__title">EP &ldquo;Quasar Sessions&rdquo;</p>
-      <div class="countdown" id="countdown">
-        <div class="countdown__unit">
-          <span class="countdown__number" id="cd-days">--</span>
-          <span class="countdown__label">Jours</span>
-        </div>
-        <div class="countdown__unit">
-          <span class="countdown__number" id="cd-hours">--</span>
-          <span class="countdown__label">Heures</span>
-        </div>
-        <div class="countdown__unit">
-          <span class="countdown__number" id="cd-minutes">--</span>
-          <span class="countdown__label">Minutes</span>
-        </div>
-        <div class="countdown__unit">
-          <span class="countdown__number" id="cd-seconds">--</span>
-          <span class="countdown__label">Secondes</span>
-        </div>
-      </div>
+    <!-- EP dispo -->
+    <div class="ep-section">
+      <p class="ep-section__title">EP &ldquo;Quasar Sessions&rdquo; disponible sur toutes les plateformes</p>
+      <iframe
+        class="ep-section__iframe"
+        src="https://distrokid.com/hyperfollow/maisonquasar/quasar-sessions"
+        title="Quasar Sessions – écouter sur toutes les plateformes"
+        loading="lazy"
+      ></iframe>
     </div>
 
     <!-- Release Party -->
@@ -367,6 +327,21 @@
         <a class="btn btn--ghost" href="artistes.html">
           Découvre les artistes &nbsp;→
         </a>
+      </div>
+    </div>
+
+    <!-- Quasar Session #3 -->
+    <div class="video-section">
+      <div class="video-section__header">
+        <p class="video-section__title">Quasar Session #3 &nbsp;|&nbsp; Joha Wallas – Galère</p>
+      </div>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/Ncu4gv7z9Jc"
+          title="Quasar Session #3 | Joha Wallas - Galère"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
 
@@ -439,30 +414,6 @@
     aria-hidden="true"
   />
 
-  <script>
-    var target = new Date('2026-03-18T18:00:00+01:00');
-
-    function pad(n) { return String(n).padStart(2, '0'); }
-
-    function tick() {
-      var diff = target - new Date();
-      if (diff <= 0) {
-        ['cd-days','cd-hours','cd-minutes','cd-seconds'].forEach(function(id) {
-          document.getElementById(id).textContent = '00';
-        });
-        document.getElementById('countdown').classList.add('countdown--expired');
-        document.querySelector('.countdown-section__title').textContent = 'Disponible maintenant';
-        return;
-      }
-      document.getElementById('cd-days').textContent    = pad(Math.floor(diff / 86400000));
-      document.getElementById('cd-hours').textContent   = pad(Math.floor((diff % 86400000) / 3600000));
-      document.getElementById('cd-minutes').textContent = pad(Math.floor((diff % 3600000) / 60000));
-      document.getElementById('cd-seconds').textContent = pad(Math.floor((diff % 60000) / 1000));
-    }
-
-    tick();
-    setInterval(tick, 1000);
-  </script>
 
 </body>
 </html>
