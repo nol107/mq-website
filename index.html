@@ -4,36 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maison Quasar – Collectif musical parisien</title>
-  <meta name="description" content="Maison Quasar est un collectif musical parisien. Découvre les artistes de la Release Party Quasar Sessions – 19 mars 2026 au Punk Paradise, Paris 11." />
-  <meta name="keywords" content="Maison Quasar, collectif musical Paris, release party, Quasar Sessions, musique underground Paris, live music Paris" />
+  <meta name="description" content="Maison Quasar est un collectif musical parisien. EP Quasar Sessions disponible sur toutes les plateformes." />
+  <meta name="keywords" content="Maison Quasar, collectif musical Paris, Quasar Sessions, musique underground Paris, live music Paris, C19 Live Sessions" />
   <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph (partage réseaux sociaux) -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://maisonquasar.fr/" />
   <meta property="og:title" content="Maison Quasar – Collectif musical parisien" />
-  <meta property="og:description" content="Découvre les artistes de la Release Party Quasar Sessions – 19 mars 2026 au Punk Paradise, Paris 11." />
-  <meta property="og:image" content="https://maisonquasar.fr/Affiches/release_party.jpg" />
+  <meta property="og:description" content="EP Quasar Sessions disponible sur toutes les plateformes." />
+  <meta property="og:image" content="https://maisonquasar.fr/Affiches/cover%20vdef.jpg" />
   <meta property="og:locale" content="fr_FR" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Maison Quasar – Collectif musical parisien" />
-  <meta name="twitter:description" content="Découvre les artistes de la Release Party Quasar Sessions – 19 mars 2026 au Punk Paradise, Paris 11." />
-  <meta name="twitter:image" content="https://maisonquasar.fr/Affiches/release_party.jpg" />
+  <meta name="twitter:description" content="EP Quasar Sessions disponible sur toutes les plateformes." />
+  <meta name="twitter:image" content="https://maisonquasar.fr/Affiches/cover%20vdef.jpg" />
 
   <link rel="canonical" href="https://maisonquasar.fr/" />
   <meta name="google-site-verification" content="28u2Uhl4dPKuNj7mqldX9SEp_P_gcHDYMo23rOucAaM" />
   <link rel="icon" type="image/png" href="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background-color: #000;
@@ -43,67 +37,84 @@
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding: 48px 20px 130px;
+      padding: 32px 20px 130px;
     }
 
-    /* ── Hero ── */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 48px;
-      width: 100%;
-    }
-
+    /* ── Logo ── */
     .hero__logo {
-      width: min(520px, 85vw);
+      width: min(380px, 72vw);
       height: auto;
+      margin-bottom: 32px;
     }
 
-    /* ── EP dispo ── */
-    .ep-section {
+    /* ── Tabs ── */
+    .tabs {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
       width: 100%;
-      padding: 28px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      margin-bottom: 48px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
+    .tabs::-webkit-scrollbar { display: none; }
 
-    .ep-section__title {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.92);
-      text-align: center;
-    }
-
-    .ep-listen {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 36px;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      color: #fff;
-      font-family: 'Inter', sans-serif;
+    .tab-btn {
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      border-bottom: 1px solid transparent;
+      margin-bottom: -1px;
+      padding: 12px 22px;
+      color: rgba(255,255,255,0.35);
+      font-family: 'Syne', sans-serif;
       font-size: 12px;
       font-weight: 400;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.25s ease, color 0.25s ease;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
     }
 
-    .ep-listen:hover {
-      background: #fff;
-      color: #000;
+    .tab-btn:hover { color: rgba(255,255,255,0.7); }
+
+    .tab-btn.active {
+      color: #fff;
+      border-bottom-color: #fff;
     }
 
-    /* ── Release Party ── */
-    .release {
+    /* ── Panels avec fade ── */
+    .tab-panel {
+      display: none;
+      width: 100%;
+      opacity: 0;
+    }
+    .tab-panel.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 56px;
+      animation: fadeIn 0.25s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ── EP hero ── */
+    .ep-hero {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -111,66 +122,108 @@
       width: 100%;
     }
 
-    .release__header {
-      width: 100%;
-      text-align: center;
-      padding-bottom: 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-    }
-
-    .release__label {
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .release__poster {
-      display: block;
-      width: min(340px, 85vw);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .release__poster img {
-      width: 100%;
+    .ep-hero__cover {
+      width: min(320px, 78vw);
       height: auto;
+      border-radius: 6px;
       display: block;
-      transition: opacity 0.3s ease;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06),
+        0 24px 64px rgba(0,0,0,0.7),
+        0 0 80px rgba(255,255,255,0.04);
     }
 
-    .release__poster:hover img {
-      opacity: 0.8;
-    }
-
-    .release__info {
+    .ep-hero__text {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 6px;
+      text-align: center;
     }
 
-    .release__name {
-      font-size: 13px;
-      font-weight: 500;
+    .ep-hero__title {
+      font-size: 17px;
+      font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.92);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
     }
 
-    .release__meta {
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      color: rgba(255, 255, 255, 0.4);
+    .ep-hero__sub {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
     }
 
-    .release__btns {
+    .ep-listen {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 32px;
+      border: 1px solid rgba(255,255,255,0.6);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+    }
+    .ep-listen:hover { background: #fff; color: #000; border-color: #fff; }
+
+    /* ── Event card ── */
+    .event {
       display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      width: 100%;
+    }
+
+    .event__divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .event__divider::before,
+    .event__divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .event__poster {
+      display: block;
+      width: min(300px, 80vw);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .event__poster:hover { transform: scale(1.01); }
+    .event__poster img { width: 100%; height: auto; display: block; }
+
+    .event__info { text-align: center; display: flex; flex-direction: column; gap: 5px; }
+
+    .event__name {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .event__meta {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.45);
     }
 
     /* ── Boutons ── */
@@ -179,257 +232,482 @@
       align-items: center;
       gap: 10px;
       padding: 12px 28px;
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255,255,255,0.6);
       background: transparent;
       color: #fff;
       font-family: 'Inter', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 400;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+    }
+    .btn:hover, .btn:focus-visible {
+      background: #fff; color: #000; border-color: #fff; outline: none;
     }
 
-    .btn:hover,
-    .btn:focus-visible {
+    .btn--filled {
       background: #fff;
       color: #000;
       border-color: #fff;
-      outline: none;
+    }
+    .btn--filled:hover, .btn--filled:focus-visible {
+      background: rgba(255,255,255,0.85);
+      border-color: rgba(255,255,255,0.85);
+      color: #000;
     }
 
-    .btn--ghost {
-      border-color: rgba(255, 255, 255, 0.25);
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    .btn--ghost:hover,
-    .btn--ghost:focus-visible {
-      border-color: #fff;
-      background: transparent;
-      color: #fff;
-    }
-
-    .btn svg {
-      flex-shrink: 0;
-    }
-
-    /* ── Section vidéo ── */
-    .video-section {
+    /* ── Video single ── */
+    .video-block {
       display: flex;
       flex-direction: column;
+      gap: 14px;
+      width: 100%;
       align-items: center;
-      gap: 28px;
-      width: 100%;
     }
 
-    .video-section__header {
+    .video-block__label {
       width: 100%;
-      text-align: center;
-      padding-bottom: 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
-    .video-section__title {
+    .video-block__title {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .video-block__sub {
       font-size: 11px;
       font-weight: 400;
-      letter-spacing: 0.26em;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.5);
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.8);
     }
 
     .video-wrapper {
       width: 100%;
       max-width: 700px;
       aspect-ratio: 16 / 9;
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
+      background: #0a0a0a;
+    }
+    .video-wrapper iframe {
+      width: 100%; height: 100%; display: block; border: none;
     }
 
-    .video-wrapper iframe {
+    /* ── Grille C19 (desktop 2 col) ── */
+    .c19-intro {
       width: 100%;
-      height: 100%;
-      display: block;
-      border: none;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .c19-intro__title {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .c19-intro__sub {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      width: 100%;
+    }
+
+    @media (min-width: 680px) {
+      .video-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 24px;
+      }
+      .video-grid .video-block__title { font-size: 11px; }
+    }
+
+    /* ── Quasar Sessions intro ── */
+    .qs-intro {
+      width: 100%;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .qs-intro__title {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .qs-intro__sub {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── À propos éditorial ── */
+    .about {
+      width: 100%;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .about__header {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .about__eyebrow {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 14px;
+    }
+
+    .about__title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 9vw, 56px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      color: #fff;
+    }
+
+    .about__rule {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.4);
+      margin-top: 28px;
+    }
+
+    .about__pull {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(16px, 4vw, 20px);
+      font-weight: 400;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.88);
+      letter-spacing: 0.01em;
+    }
+
+    .about__body {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .about__p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.01em;
+    }
+
+    .about__footer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .about__footer-year {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
     }
 
     /* ── Barre fixe en bas ── */
     .bottom-bar {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 10px;
-      padding: 12px 20px 16px;
-      background: rgba(0, 0, 0, 0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 13px 20px 17px;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(255,255,255,0.07);
       z-index: 100;
     }
 
-    .bottom-bar__mention {
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.3);
-    }
-
-    .bottom-bar__btns {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    /* ── Q logo fixé en bas à droite ── */
     .q-logo {
       position: fixed;
-      bottom: 110px;
-      right: 24px;
-      width: 40px;
-      height: auto;
-      opacity: 0.5;
+      bottom: 68px;
+      right: 20px;
+      width: 36px;
+      opacity: 0.4;
     }
   </style>
 </head>
 <body>
 
-  <section class="hero">
+  <img class="hero__logo" src="Logos/MAISON%20QUASAR%20TEXT%20LOGO%202%2002.png" alt="Maison Quasar" />
 
-    <!-- Logo principal -->
-    <img
-      class="hero__logo"
-      src="Logos/MAISON%20QUASAR%20TEXT%20LOGO%202%2002.png"
-      alt="Maison Quasar"
-    />
+  <!-- Navigation -->
+  <div class="tabs" role="tablist">
+    <button class="tab-btn active" data-tab="actu" role="tab" aria-selected="true">Nos actualités</button>
+    <button class="tab-btn" data-tab="sessions" role="tab" aria-selected="false">Quasar Sessions</button>
+    <button class="tab-btn" data-tab="c19" role="tab" aria-selected="false">C19 Live Sessions</button>
+    <button class="tab-btn" data-tab="about" role="tab" aria-selected="false">À propos</button>
+  </div>
 
-    <!-- EP dispo -->
-    <div class="ep-section">
-      <p class="ep-section__title">EP &ldquo;Quasar Sessions&rdquo; disponible sur toutes les plateformes</p>
-      <a
-        class="ep-listen"
-        href="https://distrokid.com/hyperfollow/maisonquasar/quasar-sessions"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+  <!-- ═══ Onglet 1 : Nos actualités ═══ -->
+  <div class="tab-panel active" id="tab-actu" role="tabpanel">
+
+    <!-- EP Hero -->
+    <div class="ep-hero">
+      <img class="ep-hero__cover" src="Affiches/cover%20vdef.jpg" alt="Pochette EP Quasar Sessions" />
+      <div class="ep-hero__text">
+        <p class="ep-hero__title">Quasar Sessions</p>
+        <p class="ep-hero__sub">EP · Disponible sur toutes les plateformes</p>
+      </div>
+      <a class="ep-listen" href="https://distrokid.com/hyperfollow/maisonquasar/quasar-sessions" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
         Écouter maintenant
       </a>
     </div>
 
-    <!-- Release Party -->
-    <div class="release">
-      <div class="release__header">
-        <p class="release__label">Release Party</p>
+    <!-- Cuisine 19 #6 -->
+    <div class="event">
+      <div class="event__divider">
+        <span class="section-label">Prochain événement</span>
       </div>
-      <a class="release__poster" href="https://shotgun.live/fr/events/quasar-sessions" target="_blank" rel="noopener noreferrer">
-        <img src="Affiches/release_party.jpg" alt="Quasar Sessions – Release Party" />
+      <a class="event__poster" href="https://shotgun.live/fr/events/cuisine-19-6" target="_blank" rel="noopener noreferrer">
+        <img src="Affiches/cuisine19.png" alt="Cuisine 19 #6" loading="lazy" />
       </a>
-      <div class="release__info">
-        <p class="release__name">Quasar Sessions</p>
-        <p class="release__meta">19 Mars 2026 &nbsp;·&nbsp; Punk Paradise, Paris 11</p>
+      <div class="event__info">
+        <p class="event__name">Cuisine 19 #6</p>
+        <p class="event__meta">TDTF Paris · Paris 19</p>
       </div>
-      <div class="release__btns">
-        <a class="btn" href="https://shotgun.live/fr/events/quasar-sessions" target="_blank" rel="noopener noreferrer">
-          Réserve ta place
-        </a>
-        <a class="btn btn--ghost" href="artistes.html">
-          Découvre les artistes &nbsp;→
-        </a>
-      </div>
+      <a class="btn" href="https://shotgun.live/fr/events/cuisine-19-6" target="_blank" rel="noopener noreferrer">Place gratuite</a>
     </div>
 
-    <!-- Quasar Session #3 -->
-    <div class="video-section">
-      <div class="video-section__header">
-        <p class="video-section__title">Quasar Session #3 &nbsp;|&nbsp; Joha Wallas – Galère</p>
+  </div>
+
+  <!-- ═══ Onglet 2 : Quasar Sessions ═══ -->
+  <div class="tab-panel" id="tab-sessions" role="tabpanel">
+
+    <div class="qs-intro">
+      <p class="qs-intro__title">Quasar Sessions</p>
+      <p class="qs-intro__sub">Clips · Studio 3S, Paris</p>
+    </div>
+
+    <div class="video-block">
+      <div class="video-block__label">
+        <p class="video-block__title">Session #3 &nbsp;—&nbsp; Joha Wallas</p>
+        <p class="video-block__sub">Galère</p>
       </div>
       <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/Ncu4gv7z9Jc"
-          title="Quasar Session #3 | Joha Wallas - Galère"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <iframe data-src="https://www.youtube.com/embed/Ncu4gv7z9Jc" title="Quasar Session #3 | Joha Wallas - Galère" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
 
-    <!-- Quasar Session #2 -->
-    <div class="video-section">
-      <div class="video-section__header">
-        <p class="video-section__title">Quasar Session #2 &nbsp;|&nbsp; Jeunedoomer – Casino Afghan</p>
+    <div class="video-block">
+      <div class="video-block__label">
+        <p class="video-block__title">Session #2 &nbsp;—&nbsp; Jeunedoomer</p>
+        <p class="video-block__sub">Casino Afghan</p>
       </div>
       <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/W-P07hYIffM"
-          title="Quasar Session #2 | Jeunedoomer - Casino Afghan"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <iframe data-src="https://www.youtube.com/embed/W-P07hYIffM" title="Quasar Session #2 | Jeunedoomer - Casino Afghan" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
 
-    <!-- Quasar Session #1 -->
-    <div class="video-section">
-      <div class="video-section__header">
-        <p class="video-section__title">Quasar Session #1 &nbsp;|&nbsp; Kun – Ville</p>
+    <div class="video-block">
+      <div class="video-block__label">
+        <p class="video-block__title">Session #1 &nbsp;—&nbsp; Kun</p>
+        <p class="video-block__sub">Ville</p>
       </div>
       <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/_JqxBcffCbM"
-          title="Quasar Session #1 | Kun - Ville"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <iframe data-src="https://www.youtube.com/embed/_JqxBcffCbM" title="Quasar Session #1 | Kun - Ville" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
 
-  </section>
+  </div>
 
-  <!-- Barre fixe en bas -->
-  <div class="bottom-bar">
-    <p class="bottom-bar__mention">Site bientôt disponible ..</p>
-    <div class="bottom-bar__btns">
-      <a
-        class="btn"
-        href="https://www.instagram.com/maisonquasar"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Suivez-nous sur Instagram"
-      >
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-        </svg>
-        Instagram
-      </a>
-      <a
-        class="btn"
-        href="https://3s-studios.setmore.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Réserve ta session
-      </a>
+  <!-- ═══ Onglet 3 : C19 Live Sessions ═══ -->
+  <div class="tab-panel" id="tab-c19" role="tabpanel">
+
+    <div class="c19-intro">
+      <p class="c19-intro__title">C19 Live Sessions</p>
+      <p class="c19-intro__sub">DJ Sets enregistrés · Studio 3S, Paris</p>
+    </div>
+
+    <div class="video-grid">
+
+      <div class="video-block">
+        <div class="video-block__label">
+          <p class="video-block__title">Zoovie Kazuyoshi</p>
+        </div>
+        <div class="video-wrapper">
+          <iframe data-src="https://www.youtube.com/embed/H4ANxlg5_Bk" title="C19 Live Session – Zoovie Kazuyoshi" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-block">
+        <div class="video-block__label">
+          <p class="video-block__title">Moise</p>
+        </div>
+        <div class="video-wrapper">
+          <iframe data-src="https://www.youtube.com/embed/QiAg-SlQOh8" title="C19 Live Session – Moise" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-block">
+        <div class="video-block__label">
+          <p class="video-block__title">Viv</p>
+        </div>
+        <div class="video-wrapper">
+          <iframe data-src="https://www.youtube.com/embed/lzay9RaFYjc" title="C19 Live Session – Viv" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-block">
+        <div class="video-block__label">
+          <p class="video-block__title">Discjockeyhelo</p>
+        </div>
+        <div class="video-wrapper">
+          <iframe data-src="https://www.youtube.com/embed/tUKgpmZkR20" title="C19 Live Session – Discjockeyhelo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-block">
+        <div class="video-block__label">
+          <p class="video-block__title">Fensh</p>
+        </div>
+        <div class="video-wrapper">
+          <iframe data-src="https://www.youtube.com/embed/JpW6BXq-ozM" title="C19 Live Session – Fensh" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- Q logo au-dessus de la barre -->
-  <img
-    class="q-logo"
-    src="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png"
-    alt=""
-    aria-hidden="true"
-  />
+  <!-- ═══ Onglet 4 : À propos ═══ -->
+  <div class="tab-panel" id="tab-about" role="tabpanel">
+    <div class="about">
 
+      <div class="about__header">
+        <p class="about__eyebrow">Maison Quasar · Paris 19e</p>
+        <h1 class="about__title">Qui sommes<br>nous&nbsp;?</h1>
+        <div class="about__rule"></div>
+      </div>
+
+      <p class="about__pull">La création gagne quand les gens se rencontrent, échangent, et mélangent leurs univers.</p>
+
+      <div class="about__body">
+        <p class="about__p">Maison Quasar est née de cette conviction. Depuis trois ans, on construit cet espace concrètement — de nos propres mains. D'abord dans les sous-sols des Arches Citoyennes, puis aujourd'hui au niveau -1 du bâtiment Gens Jaurès, au 182 boulevard de la Villette dans le 19e arrondissement de Paris.</p>
+        <p class="about__p">Un studio pensé de A à Z pour que les artistes puissent créer, enregistrer, mixer et filmer dans une ambiance chaleureuse, comme à la maison.</p>
+        <p class="about__p">Parce que la musique ne s'arrête pas à la cabine, on la prolonge sur scène et en ligne&nbsp;: concerts, soirées DJ avec Cuisine19, EP collectif, sessions filmées — autant de façons de partager ce qu'on fabrique ensemble avec un public qui grandit avec nous.</p>
+      </div>
+
+      <div class="about__footer">
+        <span class="about__footer-year">Fondé en 2022 · Paris</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Barre fixe en bas -->
+  <div class="bottom-bar">
+    <a class="btn btn--filled" href="https://www.instagram.com/maisonquasar" target="_blank" rel="noopener noreferrer">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+      </svg>
+      Instagram
+    </a>
+    <a class="btn btn--ghost" href="https://3s-studios.setmore.com/" target="_blank" rel="noopener noreferrer">Réserve ta session</a>
+  </div>
+
+  <img class="q-logo" src="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" alt="" aria-hidden="true" />
+
+  <script>
+    // ── Lazy-load iframes via data-src ──
+    function loadIframes(panel) {
+      panel.querySelectorAll('iframe[data-src]').forEach(function(iframe) {
+        iframe.src = iframe.dataset.src;
+        iframe.removeAttribute('data-src');
+      });
+    }
+
+    // ── Gestion des onglets ──
+    var TABS = ['actu', 'sessions', 'c19', 'about'];
+    var btns = document.querySelectorAll('.tab-btn');
+    var panels = document.querySelectorAll('.tab-panel');
+
+    function activateTab(id) {
+      btns.forEach(function(b) {
+        var active = b.dataset.tab === id;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-selected', active);
+      });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      var panel = document.getElementById('tab-' + id);
+      if (panel) {
+        panel.classList.add('active');
+        loadIframes(panel);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, '', '#' + id);
+    }
+
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() { activateTab(btn.dataset.tab); });
+    });
+
+    // ── Persistance via hash URL ──
+    var hash = location.hash.replace('#', '');
+    if (TABS.indexOf(hash) !== -1) {
+      activateTab(hash);
+    } else {
+      // Charger les iframes du premier onglet actif
+      var first = document.querySelector('.tab-panel.active');
+      if (first) loadIframes(first);
+    }
+  </script>
 
 </body>
 </html>
