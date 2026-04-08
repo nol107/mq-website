@@ -180,6 +180,8 @@ body {
 
 .event__info { text-align: center; display: flex; flex-direction: column; gap: 5px; }
 
+.event__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
 .event__name {
   font-size: 15px;
   font-weight: 500;
@@ -298,6 +300,7 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.1);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 6px;
 }
 
@@ -316,6 +319,25 @@ body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.45);
+}
+
+.section-intro__desc a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.4);
+  transition: text-decoration-color 0.2s;
+}
+.section-intro__desc a:hover { text-decoration-color: #fff; }
+
+.section-intro__desc {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.72);
+  max-width: 520px;
+  text-align: center;
+  margin-top: 6px;
 }
 
 /* ── À propos éditorial ── */
@@ -415,6 +437,80 @@ body {
   border-top: 1px solid rgba(255,255,255,0.07);
   z-index: 100;
 }
+
+/* ── Lien plan du site (bottom-bar) ── */
+.bottom-bar__sitemap {
+  position: absolute;
+  right: 20px;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.bottom-bar__sitemap:hover { color: rgba(255,255,255,0.5); }
+
+/* ── Page plan du site ── */
+.sitemap-page {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 40px 0 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sitemap-page__title {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sitemap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sitemap-list__item--page > a {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.sitemap-list__item--page > a:hover { opacity: 0.65; }
+
+.sitemap-list--sub {
+  margin-top: 10px;
+  padding-left: 16px;
+  gap: 10px;
+  border-left: 1px solid rgba(255,255,255,0.12);
+}
+
+.sitemap-list--sub li a {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.sitemap-list--sub li a:hover { color: rgba(255,255,255,0.85); }
 
 /* ── Q logo fixé ── */
 .q-logo {
