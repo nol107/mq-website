@@ -1,3 +1,10 @@
+// ── Hide past events (date < today) ──
+document.querySelectorAll('[data-event-date]').forEach(function(el) {
+  if (new Date(el.dataset.eventDate) < new Date(new Date().toDateString())) {
+    el.style.display = 'none';
+  }
+});
+
 // ── Lazy-load iframes via data-src ──
 function loadIframes(panel) {
   panel.querySelectorAll('iframe[data-src]').forEach(function(iframe) {
