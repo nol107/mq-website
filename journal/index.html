@@ -3,71 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Plan du site – Maison Quasar</title>
-  <meta name="description" content="Plan du site Maison Quasar — collectif musical parisien." />
-  <meta name="robots" content="noindex, follow" />
+  <title>Journal – Maison Quasar</title>
+  <meta name="description" content="Le journal de Maison Quasar — sessions filmées, événements, coulisses du studio à Paris 19e." />
+  <meta name="robots" content="index, follow" />
 
-  <link rel="canonical" href="https://maisonquasar.fr/sitemap.html" />
-  <link rel="icon" type="image/png" href="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://maisonquasar.fr/journal/" />
+  <meta property="og:title" content="Journal – Maison Quasar" />
+  <meta property="og:description" content="Sessions filmées, événements et coulisses du studio Maison Quasar." />
+  <meta property="og:image" content="https://maisonquasar.fr/Affiches/cover_vdef.jpg" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <link rel="canonical" href="https://maisonquasar.fr/journal/" />
+  <link rel="icon" type="image/png" href="../Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
 
   <header>
-    <a href="index.html">
-      <img class="hero__logo" src="Logos/MAISON%20QUASAR%20TEXT%20LOGO%202%2002.png" alt="Maison Quasar – retour à l'accueil" />
+    <a href="../index.html">
+      <img class="hero__logo" src="../Logos/MAISON%20QUASAR%20TEXT%20LOGO%202%2002.png" alt="Maison Quasar – retour à l'accueil" />
     </a>
   </header>
 
-  <!-- Navigation -->
   <nav class="tabs">
-    <a class="tab-btn" href="index.html#actu">Nos actualités</a>
-    <a class="tab-btn" href="index.html#sessions">Quasar Sessions</a>
-    <a class="tab-btn" href="index.html#c19">C19 Live Sessions</a>
-    <a class="tab-btn" href="a-propos.html">À propos</a>
-    <a class="tab-btn" href="journal/index.html">Journal</a>
+    <a class="tab-btn" href="../index.html#actu">Nos actualités</a>
+    <a class="tab-btn" href="../index.html#sessions">Quasar Sessions</a>
+    <a class="tab-btn" href="../index.html#c19">C19 Live Sessions</a>
+    <a class="tab-btn" href="../a-propos.html">À propos</a>
+    <a class="tab-btn active" href="index.html">Journal</a>
   </nav>
 
-  <!-- Contenu -->
-  <main class="sitemap-page">
-    <h1 class="sitemap-page__title">Plan du site</h1>
-
-    <ul class="sitemap-list">
-      <li class="sitemap-list__item sitemap-list__item--page">
-        <a href="index.html">Accueil</a>
-        <ul class="sitemap-list sitemap-list--sub">
-          <li><a href="index.html#actu">Nos actualités</a></li>
-          <li><a href="index.html#sessions">Quasar Sessions</a></li>
-          <li><a href="index.html#c19">C19 Live Sessions</a></li>
-        </ul>
-      </li>
-      <li class="sitemap-list__item sitemap-list__item--page">
-        <a href="a-propos.html">À propos</a>
-        <ul class="sitemap-list sitemap-list--sub">
-          <li><a href="a-propos.html#studio">Studio d'enregistrement</a></li>
-        </ul>
-      </li>
-      <li class="sitemap-list__item sitemap-list__item--page">
-        <a href="journal/index.html">Journal</a>
-        <ul class="sitemap-list sitemap-list--sub">
-          <li><a href="journal/quasar-session-5-ozaleji.html">Quasar Session #5 — Ozaleji</a></li>
-          <li><a href="journal/quasar-session-4-odzie.html">Quasar Session #4 — Odzie</a></li>
-          <li><a href="journal/quasar-session-3-joha-wallas.html">Quasar Session #3 — Joha Wallas</a></li>
-          <li><a href="journal/quasar-session-2-jeunedoomer.html">Quasar Session #2 — Jeunedoomer</a></li>
-          <li><a href="journal/quasar-session-1-kun.html">Quasar Session #1 — Kun</a></li>
-        </ul>
-      </li>
-      <li class="sitemap-list__item sitemap-list__item--page">
-        <a href="mentions-legales.html">Mentions légales</a>
-      </li>
-    </ul>
+  <main style="width:100%; display:flex; flex-direction:column; align-items:center; gap:48px;">
+    <section class="journal">
+      <h1 class="journal__title">Journal</h1>
+      <ul class="journal-list">
+        <li>
+          <a class="journal-card" href="quasar-session-5-ozaleji.html">
+            <div class="journal-card__date">18 avril 2026</div>
+            <div class="journal-card__title">Quasar Session #5 — Ozaleji, « Qu'est-ce qu'il se passe ?!! »</div>
+            <p class="journal-card__excerpt">Cinquième épisode des Quasar Sessions. Retour sur la session avec Ozaleji et sur la production maison de l'EP, du beat à la vidéo.</p>
+          </a>
+        </li>
+        <li>
+          <a class="journal-card" href="quasar-session-4-odzie.html">
+            <div class="journal-card__date">14 février 2026</div>
+            <div class="journal-card__title">Quasar Session #4 — Odzie, « Austère »</div>
+            <p class="journal-card__excerpt">Texte sec, voix posée, climat retenu. Une session qui prouve que le format Quasar Sessions sert aussi le silence.</p>
+          </a>
+        </li>
+        <li>
+          <a class="journal-card" href="quasar-session-3-joha-wallas.html">
+            <div class="journal-card__date">8 décembre 2025</div>
+            <div class="journal-card__title">Quasar Session #3 — Joha Wallas, « Galère »</div>
+            <p class="journal-card__excerpt">Une plume directe, une session enregistrée vite. Quand l'écriture est solide, le studio fait juste son travail.</p>
+          </a>
+        </li>
+        <li>
+          <a class="journal-card" href="quasar-session-2-jeunedoomer.html">
+            <div class="journal-card__date">22 octobre 2025</div>
+            <div class="journal-card__title">Quasar Session #2 — Jeunedoomer, « Casino Afghan »</div>
+            <p class="journal-card__excerpt">Un titre qui s'imprime à la première écoute. Univers identifié, énergie live, captation honnête.</p>
+          </a>
+        </li>
+        <li>
+          <a class="journal-card" href="quasar-session-1-kun.html">
+            <div class="journal-card__date">5 septembre 2025</div>
+            <div class="journal-card__title">Quasar Session #1 — Kun, « Ville »</div>
+            <p class="journal-card__excerpt">La toute première. Le morceau qui a posé la grammaire de toutes les sessions à venir.</p>
+          </a>
+        </li>
+      </ul>
+    </section>
   </main>
 
-  <!-- Barre fixe en bas -->
   <footer class="bottom-bar">
     <a class="btn btn--filled" href="https://www.instagram.com/maisonquasar" target="_blank" rel="noopener noreferrer">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -94,11 +107,11 @@
       SoundCloud
     </a>
     <a class="btn btn--ghost" href="https://3s-studios.setmore.com/" target="_blank" rel="noopener noreferrer">Réserve ta session</a>
-    <a class="bottom-bar__sitemap" href="sitemap.html" aria-current="page">Plan du site</a>
+    <a class="bottom-bar__sitemap" href="../sitemap.html">Plan du site</a>
   </footer>
 
-  <img class="q-logo" src="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" alt="" aria-hidden="true" />
+  <img class="q-logo" src="../Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" alt="" aria-hidden="true" />
 
-  <script src="js/consent.js"></script>
+  <script src="../js/consent.js"></script>
 </body>
 </html>

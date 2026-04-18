@@ -11,6 +11,36 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://maisonquasar.fr/journal/</loc>
+    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://maisonquasar.fr/journal/quasar-session-5-ozaleji.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://maisonquasar.fr/journal/quasar-session-4-odzie.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://maisonquasar.fr/journal/quasar-session-3-joha-wallas.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://maisonquasar.fr/journal/quasar-session-2-jeunedoomer.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://maisonquasar.fr/journal/quasar-session-1-kun.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://maisonquasar.fr/sitemap.html</loc>
     <priority>0.3</priority>
     <changefreq>monthly</changefreq>

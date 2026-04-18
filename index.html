@@ -63,6 +63,40 @@
         ]
       },
       {
+        "@type": ["RecordingStudio", "LocalBusiness"],
+        "@id": "https://maisonquasar.fr/#studio",
+        "name": "Maison Quasar Studio",
+        "url": "https://maisonquasar.fr/a-propos.html#studio",
+        "image": [
+          "https://maisonquasar.fr/photos_studio/5683aef1-3d19-446a-a6b0-485718af27f8.webp",
+          "https://maisonquasar.fr/photos_studio/83e4a492-ff03-4f3c-89e8-c40bc4d4ca8e.webp",
+          "https://maisonquasar.fr/photos_studio/05dd350e-1746-45c2-b68c-e4bfe28844e0.webp"
+        ],
+        "description": "Studio d'enregistrement à Paris 19e. Beatmaking, prise de voix, mix, mastering et réalisation de clip vidéo — tout produit en interne.",
+        "priceRange": "€€",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "182 boulevard de la Villette",
+          "addressLocality": "Paris",
+          "postalCode": "75019",
+          "addressCountry": "FR"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 48.8836, "longitude": 2.3725 },
+        "openingHoursSpecification": [{
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          "opens": "10:00",
+          "closes": "22:00"
+        }],
+        "makesOffer": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Beatmaking" }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Enregistrement (prise de voix)" }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mix & Mastering" }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Réalisation de clip vidéo" }}
+        ],
+        "sameAs": ["https://3s-studios.setmore.com/"]
+      },
+      {
         "@type": "MusicAlbum",
         "name": "Quasar Sessions",
         "byArtist": { "@type": "MusicGroup", "name": "Maison Quasar" },
@@ -118,6 +152,7 @@
     <button class="tab-btn"        data-tab="sessions" role="tab" aria-selected="false">Quasar Sessions</button>
     <button class="tab-btn"        data-tab="c19"      role="tab" aria-selected="false">C19 Live Sessions</button>
     <a class="tab-btn" href="a-propos.html">À propos</a>
+    <a class="tab-btn" href="journal/index.html">Journal</a>
   </div>
 
   <main>
