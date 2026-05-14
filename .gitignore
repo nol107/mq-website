@@ -1,2 +1,11 @@
 # Design reference bundle — kept locally, not part of the site
 design_handoff_maison_quasar/
+
+# Raw source images — heavy originals kept locally; only optimized .webp are committed
+assets/events_report/*.jpg
+assets/events_report/*.JPG
+assets/events_report/*.jpeg
+assets/c19_live_session/*.png
+assets/c19_live_session/*.jpeg
+assets/c19_live_session/*.JPG
+assets/quasar-sessions/bts-*.jpg
