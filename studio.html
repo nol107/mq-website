@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Qui sommes nous ? – Maison Quasar</title>
-  <meta name="description" content="Maison Quasar — collectif musical parisien et studio d'enregistrement à Paris 19e. Beatmaking, prise de voix, mix, mastering et clip vidéo, tout produit en interne au 182 bd de la Villette." />
+  <title>Notre studio d'enregistrement — Paris 19e – Maison Quasar</title>
+  <meta name="description" content="Studio d'enregistrement à Paris 19e, 182 boulevard de la Villette. Beatmaking, prise de voix, mix, mastering et clip vidéo — tout produit en interne par Maison Quasar." />
   <meta name="robots" content="index, follow" />
-  <meta name="keywords" content="Maison Quasar, collectif musical Paris 19, studio enregistrement Paris, boulevard de la Villette, rap underground, hip-hop Paris, DJ set, production musicale" />
+  <meta name="keywords" content="studio enregistrement Paris, studio enregistrement Paris 19, studio rap Paris, home studio Villette, beatmaking Paris, mix mastering Paris, clip vidéo Paris, Maison Quasar" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://maisonquasar.fr/a-propos.html" />
-  <meta property="og:title" content="Qui sommes nous ? – Maison Quasar" />
-  <meta property="og:description" content="Maison Quasar est un collectif musical parisien né en 2022. Studio d'enregistrement, concerts, soirées DJ et sessions filmées, Paris 19e." />
-  <meta property="og:image" content="https://maisonquasar.fr/Affiches/cover_vdef.jpg" />
+  <meta property="og:url" content="https://maisonquasar.fr/studio.html" />
+  <meta property="og:title" content="Notre studio d'enregistrement — Paris 19e – Maison Quasar" />
+  <meta property="og:description" content="Studio d'enregistrement à Paris 19e. Beatmaking, prise de voix, mix, mastering et clip vidéo, tout produit en interne." />
+  <meta property="og:image" content="https://maisonquasar.fr/photos_studio/5683aef1-3d19-446a-a6b0-485718af27f8.webp" />
   <meta property="og:locale" content="fr_FR" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Qui sommes nous ? – Maison Quasar" />
-  <meta name="twitter:description" content="Collectif musical parisien né en 2022. Studio, concerts, soirées DJ et sessions filmées, Paris 19e." />
-  <meta name="twitter:image" content="https://maisonquasar.fr/Affiches/cover_vdef.jpg" />
+  <meta name="twitter:title" content="Notre studio d'enregistrement — Paris 19e – Maison Quasar" />
+  <meta name="twitter:description" content="Studio d'enregistrement à Paris 19e. Beatmaking, prise de voix, mix, mastering et clip vidéo, tout produit en interne." />
+  <meta name="twitter:image" content="https://maisonquasar.fr/photos_studio/5683aef1-3d19-446a-a6b0-485718af27f8.webp" />
 
-  <link rel="canonical" href="https://maisonquasar.fr/a-propos.html" />
+  <link rel="canonical" href="https://maisonquasar.fr/studio.html" />
   <link rel="icon" type="image/png" href="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,30 +31,38 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MusicGroup",
-    "name": "Maison Quasar",
-    "url": "https://maisonquasar.fr",
-    "description": "Collectif musical parisien né en 2022. Studio d'enregistrement, concerts, soirées DJ et sessions filmées.",
-    "foundingDate": "2022",
-    "email": "maisonquasar@gmail.com",
-    "location": {
-      "@type": "Place",
-      "name": "Studio 3S – Gens Jaurès",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "182 boulevard de la Villette",
-        "addressLocality": "Paris",
-        "postalCode": "75019",
-        "addressCountry": "FR"
-      }
+    "@type": ["RecordingStudio", "LocalBusiness"],
+    "@id": "https://maisonquasar.fr/#studio",
+    "name": "Maison Quasar Studio",
+    "url": "https://maisonquasar.fr/studio.html",
+    "image": [
+      "https://maisonquasar.fr/photos_studio/5683aef1-3d19-446a-a6b0-485718af27f8.webp",
+      "https://maisonquasar.fr/photos_studio/83e4a492-ff03-4f3c-89e8-c40bc4d4ca8e.webp",
+      "https://maisonquasar.fr/photos_studio/05dd350e-1746-45c2-b68c-e4bfe28844e0.webp"
+    ],
+    "description": "Studio d'enregistrement à Paris 19e. Beatmaking, prise de voix, mix, mastering et réalisation de clip vidéo — tout produit en interne.",
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "182 boulevard de la Villette",
+      "addressLocality": "Paris",
+      "postalCode": "75019",
+      "addressCountry": "FR"
     },
-    "sameAs": [
-      "https://www.instagram.com/maisonquasar",
-      "https://www.youtube.com/@MaisonQuasar",
-      "https://www.tiktok.com/@maison.quasar",
-      "https://open.spotify.com/intl-fr/artist/0p0ZDJlIwvyU4HWfQldMQt",
-      "https://soundcloud.com/maison-quasar"
-    ]
+    "geo": { "@type": "GeoCoordinates", "latitude": 48.8836, "longitude": 2.3725 },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "10:00",
+      "closes": "22:00"
+    }],
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Beatmaking" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Enregistrement (prise de voix)" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mix & Mastering" }},
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Réalisation de clip vidéo" }}
+    ],
+    "sameAs": ["https://3s-studios.setmore.com/"]
   }
   </script>
 </head>
@@ -71,34 +79,42 @@
     <a class="tab-btn" href="index.html#actu">Nos actualités</a>
     <a class="tab-btn" href="index.html#sessions">Quasar Sessions</a>
     <a class="tab-btn" href="index.html#c19">C19 Live Sessions</a>
-    <a class="tab-btn active" href="a-propos.html">À propos</a>
-    <a class="tab-btn" href="studio.html">Notre studio</a>
+    <a class="tab-btn" href="a-propos.html">À propos</a>
+    <a class="tab-btn active" href="studio.html">Notre studio</a>
     <a class="tab-btn" href="journal/index.html">Journal</a>
   </nav>
 
   <!-- Contenu -->
   <main style="width:100%; display:flex; flex-direction:column; align-items:center; gap:56px;">
-    <div class="about">
 
+    <div class="about">
       <div class="about__header">
         <p class="about__eyebrow">Maison Quasar · Paris 19e</p>
-        <h1 class="about__title">Qui sommes<br>nous&nbsp;?</h1>
+        <h1 class="about__title">Notre<br>studio</h1>
         <div class="about__rule"></div>
       </div>
 
-      <p class="about__pull">La création gagne quand les gens se rencontrent, échangent, et mélangent leurs univers.</p>
+      <p class="about__pull">Du beat au clip, tout est produit ici — au 182 boulevard de la Villette, Paris 19e.</p>
 
       <div class="about__body">
-        <p class="about__p">Maison Quasar est née de cette conviction. Depuis trois ans, on construit cet espace concrètement — de nos propres mains. D'abord dans les sous-sols des Arches Citoyennes, puis aujourd'hui au niveau -1 du bâtiment Gens Jaurès, au 182 boulevard de la Villette dans le 19e arrondissement de Paris.</p>
-        <p class="about__p">Un studio pensé de A à Z pour que les artistes puissent créer, enregistrer, mixer et filmer dans une ambiance chaleureuse, comme à la maison.</p>
-        <p class="about__p">Parce que la musique ne s'arrête pas à la cabine, on la prolonge sur scène et en ligne&nbsp;: concerts, soirées DJ avec Cuisine19, EP collectif, sessions filmées — autant de façons de partager ce qu'on fabrique ensemble avec un public qui grandit avec nous.</p>
+        <p class="about__p">Le studio Maison Quasar est installé au niveau -1 du bâtiment Gens Jaurès, dans le 19e arrondissement de Paris. Un espace pensé de A à Z pour que les artistes puissent créer, enregistrer, mixer et filmer dans une ambiance chaleureuse, comme à la maison.</p>
+        <p class="about__p">Beatmaking, prise de voix, mix, mastering, réalisation de clip vidéo&nbsp;: tout se fait en interne, sans intermédiaire. L'EP <em>Quasar Sessions</em> en est la carte de visite — six morceaux écrits, enregistrés, mixés et filmés ici.</p>
       </div>
-
-      <div class="about__footer">
-        <span class="about__footer-year">Fondé en 2022 · Paris</span>
-      </div>
-
     </div>
+
+    <section id="studio" class="studio">
+      <h2 class="studio__title">Studio d'enregistrement — Paris 19e</h2>
+      <p class="studio__lede">Studio d'enregistrement situé au 182 boulevard de la Villette, Paris 19e. <strong>Beatmaking, prise de voix, mix, mastering, clip vidéo</strong> — tout est produit en interne. L'EP <em>Quasar Sessions</em> en est la carte de visite : du beat à la vidéo, sans intermédiaire.</p>
+      <div class="studio-gallery">
+        <img src="photos_studio/5683aef1-3d19-446a-a6b0-485718af27f8.webp" alt="Studio Maison Quasar — vue d'ensemble" loading="lazy" />
+        <img src="photos_studio/83e4a492-ff03-4f3c-89e8-c40bc4d4ca8e.webp" alt="Studio Maison Quasar — cabine" loading="lazy" />
+        <img src="photos_studio/05dd350e-1746-45c2-b68c-e4bfe28844e0.webp" alt="Studio Maison Quasar — régie" loading="lazy" />
+        <img src="photos_studio/38b0cdda-474e-4824-8b3d-a6e6311b2f6d.webp" alt="Studio Maison Quasar — équipement" loading="lazy" />
+        <img src="photos_studio/ec147e00-d257-4117-b13d-f8540df2a87b.webp" alt="Studio Maison Quasar — espace de création" loading="lazy" />
+        <img src="photos_studio/8f5345b5-ac4f-4fa2-9b21-1aaa688ab81e.webp" alt="Studio Maison Quasar — détail" loading="lazy" />
+      </div>
+    </section>
+
   </main>
 
   <!-- Barre fixe en bas -->
