@@ -1,0 +1,229 @@
+/* ============================================================
+   Maison Quasar — tokens.css
+   Design system tokens. Ported from the redesign handoff
+   (design_handoff_maison_quasar/source/colors_and_type.css).
+   Load globally before quasar.css.
+   ============================================================ */
+
+/* ---------- Font loading -------------------------------------
+   D-DIN is not on Google Fonts. Free distribution via cdnfonts.
+   Fallback chain prioritizes width compression — if the CDN load
+   fails, Arial Narrow → Arial → Verdana keeps the condensed feel. */
+@import url('https://fonts.cdnfonts.com/css/d-din');
+
+/* ---------- Tokens ------------------------------------------- */
+:root {
+  /* === COLORS === */
+
+  /* Brand / canvas */
+  --color-canvas-night:       #000000;  /* primary marketing canvas */
+  --color-canvas-night-soft:  #0a0a0a;  /* lifted near-black for content sections */
+  --color-canvas-light:       #ffffff;  /* shop site canvas */
+  --color-canvas-cool:        #f0f0fa;  /* secondary surface / ghost hover fill */
+
+  /* Hairlines */
+  --color-hairline-on-dark:   #3a3a3f;
+  --color-hairline-on-light:  #e0e0e8;
+
+  /* Text */
+  --color-on-primary:         #ffffff;  /* text on dark */
+  --color-on-primary-mute:    #f0f0fa;  /* secondary text on dark */
+  --color-ink:                #000000;  /* text on light */
+  --color-ink-mute:           #5a5a5f;  /* secondary text on light */
+
+  /* Link */
+  --color-link-on-dark:       #ffffff;
+  --color-link-blue-fallback: #0000ee;
+
+  /* Semantic aliases — point UI components at these, not the raw values */
+  --fg-1:                     var(--color-on-primary);
+  --fg-2:                     var(--color-on-primary-mute);
+  --fg-1-light:               var(--color-ink);
+  --fg-2-light:               var(--color-ink-mute);
+  --bg-default:               var(--color-canvas-night);
+  --bg-soft:                  var(--color-canvas-night-soft);
+  --bg-light:                 var(--color-canvas-light);
+  --bg-cool:                  var(--color-canvas-cool);
+  --hairline:                 var(--color-hairline-on-dark);
+  --hairline-light:           var(--color-hairline-on-light);
+
+  /* === RADII === */
+  --radius-xs:      4px;
+  --radius-sm:      8px;
+  --radius-md:      16px;
+  --radius-pill:    32px;
+  --radius-full:    9999px;
+
+  /* === SPACING === */
+  --space-xxs:      4px;
+  --space-xs:       8px;
+  --space-sm:       12px;
+  --space-md:       16px;
+  --space-lg:       18px;
+  --space-xl:       24px;
+  --space-xxl:      32px;
+  --space-huge:     48px;
+
+  /* === TYPE FAMILIES === */
+  --font-display: "D-DIN Condensed", "D-DIN-Bold", "D-DIN", "Arial Narrow", Arial, Verdana, sans-serif;
+  --font-ui:      "D-DIN", "Arial Narrow", Arial, Verdana, sans-serif;
+
+  /* === TYPE TOKENS ===
+     Each tier bundles size, weight, line-height, letter-spacing. */
+
+  /* display-xxl — 80px / 0.95 / 1.6px — the hero signature */
+  --type-display-xxl-size:    80px;
+  --type-display-xxl-weight:  700;
+  --type-display-xxl-lh:      0.95;
+  --type-display-xxl-tracking: 1.6px;
+
+  /* display-xl — 60px / 1.2 / 1.2px */
+  --type-display-xl-size:     60px;
+  --type-display-xl-weight:   700;
+  --type-display-xl-lh:       1.2;
+  --type-display-xl-tracking: 1.2px;
+
+  /* display-lg — 48px / 1.25 / 0.96px */
+  --type-display-lg-size:     48px;
+  --type-display-lg-weight:   700;
+  --type-display-lg-lh:       1.25;
+  --type-display-lg-tracking: 0.96px;
+
+  /* body-lg — 16px / 1.7 / 0.32px — marketing leads */
+  --type-body-lg-size:        16px;
+  --type-body-lg-weight:      400;
+  --type-body-lg-lh:          1.7;
+  --type-body-lg-tracking:    0.32px;
+
+  /* body-md — 16px / 1.5 / 0.32px — default UI body */
+  --type-body-md-size:        16px;
+  --type-body-md-weight:      400;
+  --type-body-md-lh:          1.5;
+  --type-body-md-tracking:    0.32px;
+
+  /* button-cap — 13.008px / 0.94 / 1.17px / 700 */
+  --type-button-cap-size:     13.008px;
+  --type-button-cap-weight:   700;
+  --type-button-cap-lh:       0.94;
+  --type-button-cap-tracking: 1.17px;
+
+  /* micro-cap — 12px / 2.0 / 0.96px */
+  --type-micro-cap-size:      12px;
+  --type-micro-cap-weight:    400;
+  --type-micro-cap-lh:        2.0;
+  --type-micro-cap-tracking:  0.96px;
+
+  /* caption — 13.008px / 1.5 / 0 */
+  --type-caption-size:        13.008px;
+  --type-caption-weight:      400;
+  --type-caption-lh:          1.5;
+  --type-caption-tracking:    0;
+
+  /* === MOTION === */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+}
+
+/* ---------- Base / element defaults ------------------------- */
+html, body {
+  background: var(--bg-default);
+  color: var(--fg-1);
+  font-family: var(--font-ui);
+  font-size: var(--type-body-md-size);
+  line-height: var(--type-body-md-lh);
+  letter-spacing: var(--type-body-md-tracking);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Semantic type classes ---------------------------- */
+
+.q-display-xxl,
+h1.q-display-xxl {
+  font-family: var(--font-display);
+  font-size: var(--type-display-xxl-size);
+  font-weight: var(--type-display-xxl-weight);
+  line-height: var(--type-display-xxl-lh);
+  letter-spacing: var(--type-display-xxl-tracking);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.q-display-xl,
+h2.q-display-xl {
+  font-family: var(--font-display);
+  font-size: var(--type-display-xl-size);
+  font-weight: var(--type-display-xl-weight);
+  line-height: var(--type-display-xl-lh);
+  letter-spacing: var(--type-display-xl-tracking);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.q-display-lg,
+h3.q-display-lg {
+  font-family: var(--font-display);
+  font-size: var(--type-display-lg-size);
+  font-weight: var(--type-display-lg-weight);
+  line-height: var(--type-display-lg-lh);
+  letter-spacing: var(--type-display-lg-tracking);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.q-body-lg {
+  font-family: var(--font-ui);
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--type-body-lg-weight);
+  line-height: var(--type-body-lg-lh);
+  letter-spacing: var(--type-body-lg-tracking);
+}
+
+.q-body-md, p {
+  font-family: var(--font-ui);
+  font-size: var(--type-body-md-size);
+  font-weight: var(--type-body-md-weight);
+  line-height: var(--type-body-md-lh);
+  letter-spacing: var(--type-body-md-tracking);
+}
+
+.q-button-cap {
+  font-family: var(--font-ui);
+  font-size: var(--type-button-cap-size);
+  font-weight: var(--type-button-cap-weight);
+  line-height: var(--type-button-cap-lh);
+  letter-spacing: var(--type-button-cap-tracking);
+  text-transform: uppercase;
+}
+
+.q-micro-cap {
+  font-family: var(--font-ui);
+  font-size: var(--type-micro-cap-size);
+  font-weight: var(--type-micro-cap-weight);
+  line-height: var(--type-micro-cap-lh);
+  letter-spacing: var(--type-micro-cap-tracking);
+  text-transform: uppercase;
+}
+
+.q-caption {
+  font-family: var(--font-ui);
+  font-size: var(--type-caption-size);
+  font-weight: var(--type-caption-weight);
+  line-height: var(--type-caption-lh);
+  letter-spacing: var(--type-caption-tracking);
+}
+
+/* ---------- Links --------------------------------------------- */
+a, a:visited {
+  color: var(--color-link-on-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+a:hover { opacity: 0.75; }
+
+.on-light a, .on-light a:visited {
+  color: var(--color-ink);
+}
