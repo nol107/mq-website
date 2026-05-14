@@ -23,10 +23,9 @@
   <link rel="canonical" href="https://maisonquasar.fr/a-propos.html" />
   <link rel="icon" type="image/png" href="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=2" />
+  <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/quasar.css" />
 
   <script type="application/ld+json">
   {
@@ -60,79 +59,188 @@
 </head>
 <body>
 
-  <header>
-    <a href="index.html">
-      <img class="hero__logo" src="Logos/MAISON%20QUASAR%20TEXT%20LOGO%202%2002.png" alt="Maison Quasar – retour à l'accueil" />
-    </a>
-  </header>
-
-  <!-- Navigation -->
-  <nav class="tabs">
-    <a class="tab-btn" href="index.html#actu">Nos actualités</a>
-    <a class="tab-btn" href="index.html#sessions">Quasar Sessions</a>
-    <a class="tab-btn" href="index.html#c19">C19 Live Sessions</a>
-    <a class="tab-btn active" href="a-propos.html">À propos</a>
-    <a class="tab-btn" href="studio.html">Notre studio</a>
-    <a class="tab-btn" href="journal/index.html">Journal</a>
+  <!-- ═══ Nav ═══ -->
+  <nav class="mq-nav">
+    <a class="mq-nav__wm" href="index.html">Maison Quasar</a>
+    <div class="mq-nav__items">
+      <a class="mq-nav__item" href="index.html">Accueil</a>
+      <a class="mq-nav__item" href="index.html#sessions">Sessions</a>
+      <a class="mq-nav__item" href="index.html#events">Événements</a>
+      <a class="mq-nav__item" href="studio.html">Studio</a>
+      <a class="mq-nav__item is-active" href="a-propos.html">À propos</a>
+      <a class="mq-nav__item" href="journal/index.html">Journal</a>
+    </div>
+    <a class="mq-nav__cta" href="https://3s-studios.setmore.com/" target="_blank" rel="noopener noreferrer">Réserve une session</a>
+    <button class="mq-nav__burger" aria-label="Ouvrir le menu">
+      <img src="assets/icons/menu.svg" alt="" />
+    </button>
   </nav>
 
-  <!-- Contenu -->
-  <main style="width:100%; display:flex; flex-direction:column; align-items:center; gap:56px;">
-    <div class="about">
+  <!-- ═══ Mobile menu ═══ -->
+  <div class="mq-mobilemenu" role="dialog" aria-label="Menu" aria-hidden="true">
+    <div class="mq-mobilemenu__top">
+      <span class="mq-nav__wm">Maison Quasar</span>
+      <button class="mq-mobilemenu__close" aria-label="Fermer le menu">
+        <img src="assets/icons/close.svg" alt="" />
+      </button>
+    </div>
+    <div class="mq-mobilemenu__items">
+      <a class="mq-mobilemenu__item" href="index.html">Accueil</a>
+      <a class="mq-mobilemenu__item" href="index.html#sessions">Sessions</a>
+      <a class="mq-mobilemenu__item" href="index.html#events">Événements</a>
+      <a class="mq-mobilemenu__item" href="studio.html">Studio</a>
+      <a class="mq-mobilemenu__item" href="a-propos.html">À propos</a>
+      <a class="mq-mobilemenu__item" href="journal/index.html">Journal</a>
+    </div>
+    <div class="mq-mobilemenu__foot">
+      <a href="https://www.instagram.com/maisonquasar" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/@MaisonQuasar" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://open.spotify.com/intl-fr/artist/0p0ZDJlIwvyU4HWfQldMQt" target="_blank" rel="noopener noreferrer">Spotify</a>
+      <a href="https://www.tiktok.com/@maison.quasar" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </div>
+  </div>
 
-      <div class="about__header">
-        <p class="about__eyebrow">Maison Quasar · Paris 19e</p>
-        <h1 class="about__title">Qui sommes<br>nous&nbsp;?</h1>
-        <div class="about__rule"></div>
+  <!-- ═══ Page header ═══ -->
+  <header class="mq-pagehead">
+    <div class="mq-pagehead__inner">
+      <div class="mq-pagehead__eyebrow">Collectif · Depuis 2022</div>
+      <h1 class="mq-pagehead__h">À propos</h1>
+    </div>
+  </header>
+
+  <!-- ═══ About body ═══ -->
+  <main class="mq-about">
+    <p class="mq-about__intro">
+      Maison Quasar est un collectif musical parisien. On produit, on filme et on joue
+      depuis le Studio 3S, dans le 19ᵉ. Rap, hip-hop, électronique — tout en interne.
+    </p>
+
+    <section class="mq-about__pic">
+      <img src="photos_studio/5683aef1-3d19-446a-a6b0-485718af27f8.webp" alt="Studio Maison Quasar — vue d'ensemble : booth principal, régie, salle live" />
+    </section>
+
+    <div class="mq-about__grid">
+      <div class="mq-about__label">01 — Le collectif</div>
+      <div class="mq-about__body">
+        <p>
+          Maison Quasar réunit une douzaine d'artistes, producteurs et techniciens
+          autour d'une idée simple : tout faire au même endroit, du beat à la sortie.
+          La maison n'est pas un label — c'est un atelier ouvert, organisé autour du
+          studio et des dates qu'on monte ensemble.
+        </p>
+        <p>
+          On signe des morceaux courts et soignés, on documente ce qui se passe en
+          cabine, et on emmène le tout sur scène à Paris et au-delà. Quand on dit
+          <em> collectif</em>, on l'entend au sens littéral : chaque sortie passe par
+          plusieurs paires de mains.
+        </p>
       </div>
+    </div>
 
-      <p class="about__pull">La création gagne quand les gens se rencontrent, échangent, et mélangent leurs univers.</p>
-
-      <div class="about__body">
-        <p class="about__p">Maison Quasar est née de cette conviction. Depuis trois ans, on construit cet espace concrètement — de nos propres mains. D'abord dans les sous-sols des Arches Citoyennes, puis aujourd'hui au niveau -1 du bâtiment Gens Jaurès, au 182 boulevard de la Villette dans le 19e arrondissement de Paris.</p>
-        <p class="about__p">Un studio pensé de A à Z pour que les artistes puissent créer, enregistrer, mixer et filmer dans une ambiance chaleureuse, comme à la maison.</p>
-        <p class="about__p">Parce que la musique ne s'arrête pas à la cabine, on la prolonge sur scène et en ligne&nbsp;: concerts, soirées DJ avec Cuisine19, EP collectif, sessions filmées — autant de façons de partager ce qu'on fabrique ensemble avec un public qui grandit avec nous.</p>
+    <div class="mq-about__grid">
+      <div class="mq-about__label">02 — Le studio</div>
+      <div class="mq-about__body">
+        <p>
+          Le Studio 3S est notre base. Cabine de prise traitée, régie analogique-numérique,
+          salle live attenante pour les sessions filmées. Il est ouvert aux artistes
+          extérieurs en location — prise de voix, mix, mastering, captation vidéo.
+        </p>
+        <p>
+          Les Quasar Sessions et les C19 Live Sessions y sont enregistrées intégralement
+          en interne. Pour les artistes signés, la maison absorbe la production —
+          du beat au clip — sans sous-traitance.
+        </p>
       </div>
+    </div>
 
-      <div class="about__footer">
-        <span class="about__footer-year">Fondé en 2022 · Paris</span>
+    <div class="mq-about__grid">
+      <div class="mq-about__label">03 — Les sorties</div>
+      <div class="mq-about__body">
+        <p>
+          La saison 01 a abouti à l'EP <em>Quasar Sessions</em>, six morceaux signés
+          Kun, Jeunedoomer, Joha Wallas, Odzie, Ozaleji et un sixième invité. La
+          release party s'est tenue au Punk Paradise le 19 mars 2026.
+        </p>
+        <p>
+          En parallèle, les C19 Live Sessions documentent les DJs qui passent par
+          le studio : Val Fleuri, Leoul D, Fandri Ska, Zoovie Kazuyoshi, Moïse, Viv,
+          Discjockeyhelo, Fensh — disponibles sur YouTube et SoundCloud.
+        </p>
       </div>
+    </div>
 
+    <div class="mq-about__grid">
+      <div class="mq-about__label">04 — La scène</div>
+      <div class="mq-about__body">
+        <p>
+          Une à deux fois par saison, on monte tout sur scène. La Bringuette du plaisir
+          à La Bellevilloise le 23 avril, suivie de Cuisine 33 aux Vivres de l'art à
+          Bordeaux le 15 mai. Les dates de l'automne 2026 sont en cours de programmation.
+        </p>
+        <p>
+          Pour booker, jouer, ou simplement passer en cabine : <a href="mailto:contact@maisonquasar.fr">contact@maisonquasar.fr</a>.
+          Pour réserver un créneau studio, <a href="https://3s-studios.setmore.com/" target="_blank" rel="noopener noreferrer">3s-studios.setmore.com</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="mq-about__grid">
+      <div class="mq-about__label">05 — Crédits & équipe</div>
+      <div class="mq-about__body">
+        <p>
+          Direction artistique et production : Kun · Jeunedoomer · Odzie. Ingénierie :
+          équipe Studio 3S. Captation et montage vidéo : Maison Quasar Films.
+          Identité visuelle : refonte alpha, automne 2026.
+        </p>
+        <p>
+          Maison Quasar est une association loi 1901 basée à Paris 19ᵉ. SIRET, statuts
+          et rapports d'activité disponibles sur demande.
+        </p>
+      </div>
     </div>
   </main>
 
-  <!-- Barre fixe en bas -->
-  <footer class="bottom-bar">
-    <a class="btn btn--filled" href="https://www.instagram.com/maisonquasar" target="_blank" rel="noopener noreferrer">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-      </svg>
-      Instagram
-    </a>
-    <a class="btn btn--ghost" href="https://www.youtube.com/@MaisonQuasar" target="_blank" rel="noopener noreferrer">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98" fill="#000"/></svg>
-      YouTube
-    </a>
-    <a class="btn btn--ghost" href="https://open.spotify.com/intl-fr/artist/0p0ZDJlIwvyU4HWfQldMQt" target="_blank" rel="noopener noreferrer">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.5 17.3c-.2.3-.6.4-1 .2-2.7-1.6-6-2-10-1.1-.4.1-.8-.1-.9-.5-.1-.4.1-.8.5-.9 4.3-1 8.1-.6 11.1 1.2.4.3.5.7.3 1.1zm1.5-3.3c-.3.4-.8.5-1.2.3-3.1-1.9-7.7-2.5-11.4-1.3-.5.1-1-.1-1.1-.6-.2-.5.1-1 .6-1.1 4.1-1.3 9.2-.7 12.7 1.5.4.2.5.8.4 1.2zm.1-3.4c-3.7-2.2-9.8-2.4-13.3-1.3-.5.2-1.1-.1-1.3-.6-.2-.5.1-1.1.6-1.3 4.1-1.2 10.8-1 15 1.5.5.3.6.9.4 1.4-.3.4-.9.6-1.4.3z"/></svg>
-      Spotify
-    </a>
-    <a class="btn btn--ghost" href="https://www.tiktok.com/@maison.quasar" target="_blank" rel="noopener noreferrer">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78c.29 0 .58.04.84.11v-3.5a6.37 6.37 0 0 0-.84-.05A6.34 6.34 0 0 0 3.15 15.2a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.73a8.19 8.19 0 0 0 4.77 1.52V6.8a4.84 4.84 0 0 1-1.01-.11z"/></svg>
-      TikTok
-    </a>
-    <a class="btn btn--ghost" href="https://soundcloud.com/maison-quasar" target="_blank" rel="noopener noreferrer">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.175 12.225c-.05 0-.1.05-.1.1l-.25 2.15.25 2.1c0 .1.05.1.1.1s.1-.05.1-.1l.3-2.1-.3-2.15c0-.1-.05-.1-.1-.1zm1.2-.8c-.1 0-.15.05-.15.15l-.35 2.95.35 2.9c0 .1.05.15.15.15s.15-.05.15-.15l.4-2.9-.4-2.95c0-.1-.05-.15-.15-.15zm1.25-.45c-.1 0-.2.05-.2.2l-.3 3.2.3 3.1c0 .1.1.2.2.2s.2-.1.2-.2l.35-3.1-.35-3.2c0-.15-.1-.2-.2-.2zm1.25-.25c-.15 0-.25.1-.25.25l-.25 3.45.25 3.25c0 .15.1.25.25.25s.25-.1.25-.25l.3-3.25-.3-3.45c0-.15-.1-.25-.25-.25zm1.2-.35c-.15 0-.25.1-.25.25l-.25 3.55.25 3.3c.05.15.15.25.3.25.1 0 .25-.1.25-.25l.3-3.3-.3-3.55c0-.15-.15-.25-.3-.25zm1.25.65c-.15 0-.3.1-.3.3l-.2 2.9.2 3.3c0 .15.15.3.3.3s.3-.15.3-.3l.25-3.3-.25-2.9c0-.2-.15-.3-.3-.3zM8.3 9.2c-.2 0-.35.15-.35.35L7.7 12.5l.25 3.3c0 .2.15.35.35.35s.35-.15.35-.35l.25-3.3-.25-2.95c0-.2-.15-.35-.35-.35zm1.3-.55c-.2 0-.4.15-.4.4l-.2 3.45.2 3.3c0 .2.2.4.4.4s.4-.2.4-.4l.2-3.3-.2-3.45c0-.25-.2-.4-.4-.4zm1.3-.15c-.25 0-.45.2-.45.45l-.15 3.55.15 3.25c0 .25.2.45.45.45s.45-.2.45-.45l.2-3.25-.2-3.55c0-.25-.2-.45-.45-.45zm1.3.5c-.25 0-.45.2-.45.45l-.15 3.05.15 3.2c0 .25.2.45.45.45.25 0 .45-.2.5-.45l.15-3.2-.15-3.05c-.05-.25-.25-.45-.5-.45zm1.35-1.5c-.3 0-.5.2-.5.5L12.9 12.5l.15 3.15c0 .3.2.5.5.5s.5-.2.5-.5l.2-3.15-.2-4.5c0-.3-.2-.5-.5-.5zm4.15-.75c-.1-.25-.35-.4-.6-.4a.68.68 0 0 0-.65.45l-.15 5-.1.05.1 3.1c0 .35.3.65.65.65.35 0 .6-.3.65-.65l.2-3.1-.2-5.05zm1.3.1c-.35 0-.65.3-.65.65l-.15 4.65.15 3.05c0 .35.3.65.65.65s.65-.3.65-.65l.2-3.05-.2-4.65c0-.35-.3-.65-.65-.65zM20.35 9c-.4 0-.7.3-.7.7l-.1 2.8.1 3c0 .4.3.7.7.7.35 0 .7-.3.7-.7l.15-3-.15-2.8c0-.4-.35-.7-.7-.7zm1.4.8c-.4 0-.7.3-.7.7l-.1 2v.05l.1 2.95c0 .4.3.7.7.7.4 0 .7-.35.7-.7l.1-2.95-.1-2.05c0-.4-.3-.7-.7-.7z"/></svg>
-      SoundCloud
-    </a>
-    <a class="btn btn--ghost" href="https://3s-studios.setmore.com/" target="_blank" rel="noopener noreferrer">Réserve ta session</a>
-    <a class="bottom-bar__sitemap" href="sitemap.html">Plan du site</a>
+  <!-- ═══ Footer ═══ -->
+  <footer class="mq-footer">
+    <div class="mq-footer__top">
+      <div>
+        <div class="mq-footer__wordmark">Maison<br/>Quasar</div>
+        <p class="mq-footer__tag">
+          Collectif musical parisien<br/>Studio · Scène · Sorties
+        </p>
+      </div>
+      <div class="mq-footer__col">
+        <h4>Le collectif</h4>
+        <a class="mq-footer__link" href="a-propos.html">À propos</a>
+        <a class="mq-footer__link" href="studio.html">Notre studio</a>
+        <a class="mq-footer__link" href="journal/index.html">Journal</a>
+        <a class="mq-footer__link" href="index.html#sessions">Quasar Sessions</a>
+        <a class="mq-footer__link" href="index.html#c19">C19 Live</a>
+        <a class="mq-footer__link" href="sitemap.html">Plan du site</a>
+      </div>
+      <div class="mq-footer__col">
+        <h4>Écoutez</h4>
+        <a class="mq-footer__link" href="https://distrokid.com/hyperfollow/maisonquasar/quasar-sessions" target="_blank" rel="noopener noreferrer">Quasar Sessions · EP</a>
+        <a class="mq-footer__link" href="https://open.spotify.com/intl-fr/artist/0p0ZDJlIwvyU4HWfQldMQt" target="_blank" rel="noopener noreferrer">Spotify</a>
+        <a class="mq-footer__link" href="https://soundcloud.com/maison-quasar" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+        <a class="mq-footer__link" href="https://www.youtube.com/@MaisonQuasar" target="_blank" rel="noopener noreferrer">YouTube</a>
+      </div>
+      <div class="mq-footer__col">
+        <h4>Suivez</h4>
+        <a class="mq-footer__link" href="https://www.instagram.com/maisonquasar" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="mq-footer__link" href="https://www.tiktok.com/@maison.quasar" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a class="mq-footer__link" href="https://3s-studios.setmore.com/" target="_blank" rel="noopener noreferrer">Réserver le studio</a>
+        <a class="mq-footer__link" href="mailto:contact@maisonquasar.fr">Contact</a>
+      </div>
+    </div>
+    <div class="mq-footer__consent" data-consent-slot hidden></div>
+    <div class="mq-footer__legal">
+      <div>© 2026 Maison Quasar<span class="sep">·</span>Paris, 19<sup>e</sup></div>
+      <div>Studio 3S<span class="sep">·</span><a href="mentions-legales.html">Mentions légales</a><span class="sep">·</span>Crédits</div>
+    </div>
   </footer>
 
-  <img class="q-logo" src="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" alt="" aria-hidden="true" />
-
   <script src="js/consent.js"></script>
+  <script src="js/quasar.js"></script>
 </body>
 </html>
