@@ -8,7 +8,7 @@
   <meta name="robots" content="noindex, follow" />
 
   <link rel="canonical" href="https://shotgun.live/events/vivres-de-l-art-x-maison-quasar-cuisine-33?utm_source=flyer" />
-  <meta http-equiv="refresh" content="0; url=https://shotgun.live/events/vivres-de-l-art-x-maison-quasar-cuisine-33?utm_source=flyer" />
+  <meta http-equiv="refresh" content="1; url=https://shotgun.live/events/vivres-de-l-art-x-maison-quasar-cuisine-33?utm_source=flyer" />
 
   <link rel="icon" type="image/png" href="../Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,7 +17,46 @@
   <link rel="stylesheet" href="../css/styles.css?v=2" />
 
   <script>
-    window.location.replace("https://shotgun.live/events/vivres-de-l-art-x-maison-quasar-cuisine-33?utm_source=flyer");
+    (function () {
+      var EVENT_BASE = "https://shotgun.live/events/vivres-de-l-art-x-maison-quasar-cuisine-33";
+      var GA_ID = "G-6XG6Q19H4H";
+
+      // ?from= sur l'URL /billetterie permet de distinguer les supports
+      // (ex: /billetterie?from=insta). Par défaut : "flyer".
+      var params = new URLSearchParams(window.location.search);
+      var source = (params.get("from") || "flyer").trim().toLowerCase();
+      source = source.replace(/[^a-z0-9_-]/g, "") || "flyer";
+
+      var target = EVENT_BASE + "?utm_source=" + encodeURIComponent(source);
+
+      function go() { window.location.replace(target); }
+
+      // GA4 uniquement si l'internaute a déjà accepté les cookies sur le site
+      // principal (conforme CNIL — pas de bannière sur une page de redirection).
+      var consent = null;
+      try { consent = localStorage.getItem("mq_consent"); } catch (e) {}
+
+      if (consent === "accept") {
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag("js", new Date());
+        gtag("config", GA_ID, { anonymize_ip: true });
+        gtag("event", "billetterie_redirect", {
+          billetterie_source: source,
+          transport_type: "beacon",
+          event_callback: go
+        });
+        // filet de sécurité si le callback ne se déclenche pas
+        setTimeout(go, 600);
+      } else {
+        go();
+      }
+    })();
   </script>
 </head>
 <body>
