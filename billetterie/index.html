@@ -11,10 +11,15 @@
   <meta http-equiv="refresh" content="1; url=https://shotgun.live/events/vivres-de-l-art-x-maison-quasar-cuisine-33?utm_source=flyer" />
 
   <link rel="icon" type="image/png" href="../Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/styles.css?v=2" />
+  <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/quasar.css" />
+  <style>
+    .mq-redirect { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 32px; }
+    .mq-redirect__msg { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 4vw, 36px); letter-spacing: 0.8px; text-transform: uppercase; max-width: 480px; margin: 0; }
+    .mq-redirect__fallback { margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.6); }
+    .mq-redirect__fallback a { color: #fff; }
+  </style>
 
   <script>
     (function () {
@@ -60,10 +65,10 @@
   </script>
 </head>
 <body>
-  <main class="about" style="align-items:center; text-align:center; margin-top:80px;">
-    <p class="about__pull" style="max-width:480px;">Redirection vers la billetterie…</p>
-    <p style="margin-top:16px; font-size:13px; color:rgba(255,255,255,0.6);">
-      Si rien ne se passe, <a href="https://shotgun.live/events/vivres-de-l-art-x-maison-quasar-cuisine-33?utm_source=flyer" style="color:#fff; text-decoration:underline;">cliquez ici</a>. 
+  <main class="mq-redirect">
+    <p class="mq-redirect__msg">Redirection vers la billetterie…</p>
+    <p class="mq-redirect__fallback">
+      Si rien ne se passe, <a href="https://shotgun.live/events/vivres-de-l-art-x-maison-quasar-cuisine-33?utm_source=flyer">cliquez ici</a>.
     </p>
   </main>
 </body>

@@ -7,26 +7,114 @@
   <meta name="robots" content="noindex, follow" />
   <link rel="icon" type="image/png" href="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=2" />
+  <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/quasar.css" />
+  <style>
+    /* 404-specific: center the page header content and cap width — no
+       shared "centered pagehead" variant exists yet in quasar.css. */
+    .mq-pagehead--404 { text-align: center; }
+    .mq-pagehead--404 .mq-pagehead__inner { max-width: 640px; }
+    .mq-404__sub { font-size: 16px; line-height: 1.6; letter-spacing: 0.32px; color: rgba(255,255,255,0.7); margin: 24px auto 0; max-width: 420px; }
+    .mq-404__cta { margin-top: 32px; }
+  </style>
 </head>
 <body>
 
-  <header>
-    <a href="index.html">
-      <img class="hero__logo" src="Logos/MAISON%20QUASAR%20TEXT%20LOGO%202%2002.png" alt="Maison Quasar – retour à l'accueil" />
-    </a>
+  <!-- ═══ Nav ═══ -->
+  <nav class="mq-nav">
+    <a class="mq-nav__wm" href="index.html">Maison Quasar</a>
+    <div class="mq-nav__items">
+      <a class="mq-nav__item" href="index.html">Accueil</a>
+      <a class="mq-nav__item" href="index.html#sessions">Quasar Sessions</a>
+      <a class="mq-nav__item" href="index.html#c19">C19 Live Sessions</a>
+      <a class="mq-nav__item" href="index.html#events">Événements</a>
+      <a class="mq-nav__item" href="studio.html">Studio</a>
+      <a class="mq-nav__item" href="a-propos.html">À propos</a>
+      <a class="mq-nav__item" href="journal/index.html">Journal</a>
+    </div>
+    <a class="mq-nav__cta" href="https://3s-studios.setmore.com/" target="_blank" rel="noopener noreferrer">Réserve une session</a>
+    <button class="mq-nav__burger" aria-label="Ouvrir le menu">
+      <img src="assets/icons/menu.svg" alt="" />
+    </button>
+  </nav>
+
+  <!-- ═══ Mobile menu ═══ -->
+  <div class="mq-mobilemenu" role="dialog" aria-label="Menu" aria-hidden="true">
+    <div class="mq-mobilemenu__top">
+      <span class="mq-nav__wm">Maison Quasar</span>
+      <button class="mq-mobilemenu__close" aria-label="Fermer le menu">
+        <img src="assets/icons/close.svg" alt="" />
+      </button>
+    </div>
+    <div class="mq-mobilemenu__items">
+      <a class="mq-mobilemenu__item" href="index.html">Accueil</a>
+      <a class="mq-mobilemenu__item" href="index.html#sessions">Quasar Sessions</a>
+      <a class="mq-mobilemenu__item" href="index.html#c19">C19 Live Sessions</a>
+      <a class="mq-mobilemenu__item" href="index.html#events">Événements</a>
+      <a class="mq-mobilemenu__item" href="studio.html">Studio</a>
+      <a class="mq-mobilemenu__item" href="a-propos.html">À propos</a>
+      <a class="mq-mobilemenu__item" href="journal/index.html">Journal</a>
+    </div>
+    <div class="mq-mobilemenu__foot">
+      <a href="https://www.instagram.com/maisonquasar" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/@MaisonQuasar" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://open.spotify.com/intl-fr/artist/0p0ZDJlIwvyU4HWfQldMQt" target="_blank" rel="noopener noreferrer">Spotify</a>
+      <a href="https://www.tiktok.com/@maison.quasar" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </div>
+  </div>
+
+  <!-- ═══ Page header ═══ -->
+  <header class="mq-pagehead mq-pagehead--404">
+    <div class="mq-pagehead__inner">
+      <div class="mq-pagehead__eyebrow">Erreur 404</div>
+      <h1 class="mq-pagehead__h">Page introuvable</h1>
+      <p class="mq-404__sub">La page que vous cherchez n'existe pas ou a été déplacée.</p>
+      <a class="q-btn q-btn--ghost-dark mq-404__cta" href="index.html">Retour à l'accueil</a>
+    </div>
   </header>
 
-  <main class="about" style="align-items:center; text-align:center; margin-top:40px;">
-    <h1 class="about__title" style="font-size:clamp(28px,7vw,48px);">Page<br>introuvable</h1>
-    <p class="about__pull" style="max-width:400px;">La page que vous cherchez n'existe pas ou a été déplacée.</p>
-    <a class="btn btn--filled" href="index.html" style="margin-top:16px;">Retour à l'accueil</a>
-  </main>
+  <!-- ═══ Footer ═══ -->
+  <footer class="mq-footer">
+    <div class="mq-footer__top">
+      <div>
+        <div class="mq-footer__wordmark">Maison<br/>Quasar</div>
+        <p class="mq-footer__tag">
+          Collectif musical parisien<br/>Studio · Scène · Sorties
+        </p>
+      </div>
+      <div class="mq-footer__col">
+        <h4>Le collectif</h4>
+        <a class="mq-footer__link" href="a-propos.html">À propos</a>
+        <a class="mq-footer__link" href="studio.html">Notre studio</a>
+        <a class="mq-footer__link" href="journal/index.html">Journal</a>
+        <a class="mq-footer__link" href="index.html#sessions">Quasar Sessions</a>
+        <a class="mq-footer__link" href="index.html#c19">C19 Live</a>
+        <a class="mq-footer__link" href="sitemap.html">Plan du site</a>
+      </div>
+      <div class="mq-footer__col">
+        <h4>Écoutez</h4>
+        <a class="mq-footer__link" href="https://distrokid.com/hyperfollow/maisonquasar/quasar-sessions" target="_blank" rel="noopener noreferrer">Quasar Sessions · EP</a>
+        <a class="mq-footer__link" href="https://open.spotify.com/intl-fr/artist/0p0ZDJlIwvyU4HWfQldMQt" target="_blank" rel="noopener noreferrer">Spotify</a>
+        <a class="mq-footer__link" href="https://soundcloud.com/maison-quasar" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+        <a class="mq-footer__link" href="https://www.youtube.com/@MaisonQuasar" target="_blank" rel="noopener noreferrer">YouTube</a>
+      </div>
+      <div class="mq-footer__col">
+        <h4>Suivez</h4>
+        <a class="mq-footer__link" href="https://www.instagram.com/maisonquasar" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="mq-footer__link" href="https://www.tiktok.com/@maison.quasar" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a class="mq-footer__link" href="https://3s-studios.setmore.com/" target="_blank" rel="noopener noreferrer">Réserver le studio</a>
+        <a class="mq-footer__link" href="mailto:contact@maisonquasar.fr">Contact</a>
+      </div>
+    </div>
+    <div class="mq-footer__consent" data-consent-slot hidden></div>
+    <div class="mq-footer__legal">
+      <div>© 2026 Maison Quasar<span class="sep">·</span>Paris, 19<sup>e</sup></div>
+      <div>Studio 3S<span class="sep">·</span><a href="mentions-legales.html">Mentions légales</a><span class="sep">·</span>Crédits</div>
+    </div>
+  </footer>
 
-  <img class="q-logo" src="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" alt="" aria-hidden="true" />
-
+  <script src="js/consent.js"></script>
+  <script src="js/quasar.js"></script>
 </body>
 </html>
