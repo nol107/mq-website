@@ -111,11 +111,27 @@
     apply("Tous");
   }
 
+  /* ---------- Auto-hide past events -------------------------- */
+  /* Any element carrying data-event-date="YYYY-MM-DD" is hidden
+     once that date is in the past. Ported from the pre-redesign
+     js/app.js so stale event cards don't linger on the site. */
+  function initAutoHideEvents() {
+    var els = document.querySelectorAll("[data-event-date]");
+    if (!els.length) return;
+    var today = new Date(new Date().toDateString());
+    els.forEach(function (el) {
+      if (new Date(el.dataset.eventDate) < today) {
+        el.style.display = "none";
+      }
+    });
+  }
+
   /* ---------- Boot ------------------------------------------ */
   function boot() {
     initMobileMenu();
     initHero();
     initJournalFilter();
+    initAutoHideEvents();
   }
 
   if (document.readyState === "loading") {
