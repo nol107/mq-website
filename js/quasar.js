@@ -47,8 +47,14 @@
     function pad(n) { return String(n).padStart(2, "0"); }
 
     function render() {
-      slides.forEach(function (s, i) { s.classList.toggle("is-active", i === idx); });
-      dots.forEach(function (d, i) { d.classList.toggle("is-active", i === idx); });
+      slides.forEach(function (s, i) {
+        s.classList.toggle("is-active", i === idx);
+        s.setAttribute("aria-hidden", i === idx ? "false" : "true");
+      });
+      dots.forEach(function (d, i) {
+        d.classList.toggle("is-active", i === idx);
+        d.setAttribute("aria-current", i === idx ? "true" : "false");
+      });
       if (counter) counter.textContent = pad(idx + 1) + " / " + pad(total);
     }
 
@@ -64,7 +70,8 @@
     });
 
     render();
-    if (autoMs > 0) {
+    var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (autoMs > 0 && !prefersReducedMotion) {
       setInterval(function () { goTo(idx + 1); }, autoMs);
     }
   }

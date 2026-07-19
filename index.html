@@ -333,8 +333,8 @@
   <div class="q-livepill"><span class="dot"></span>Quasar Sessions · EP out now</div>
 
   <!-- ═══ Hero — cycling deck ═══ -->
-  <section class="mq-hero" data-hero-auto="6000">
-    <div class="mq-hero__deck">
+  <section class="mq-hero" data-hero-auto="6000" role="region" aria-roledescription="carousel" aria-label="Diaporama d'accueil">
+    <div class="mq-hero__deck" aria-live="polite">
 
       <!-- Slide 01 — Studio -->
       <div class="mq-hero__slide is-active">
@@ -354,14 +354,14 @@
       </div>
 
       <!-- Slide 02 — EP -->
-      <div class="mq-hero__slide">
+      <div class="mq-hero__slide" aria-hidden="true">
         <div class="bg">
           <img src="assets/quasar-sessions/session-recording.webp" alt="Quasar Sessions — enregistrement au studio" style="object-position: center 84%;" loading="lazy" />
           <div class="mq-hero__grade"></div>
         </div>
         <div class="mq-hero__inner">
           <div class="mq-hero__eyebrow"><span>EP · Disponible partout</span></div>
-          <h1 class="mq-hero__h">Quasar<br/>Sessions</h1>
+          <h2 class="mq-hero__h">Quasar<br/>Sessions</h2>
           <p class="mq-hero__sub">Six morceaux, six artistes.<br/>Composés, enregistrés, mixés et clippés dans les Studios 3S.<br/>La saison 1 est disponible sur toutes les plateformes et sur Youtube.</p>
           <div class="mq-hero__ctas">
             <a class="q-btn q-btn--ghost-dark" href="https://distrokid.com/hyperfollow/maisonquasar/quasar-sessions" target="_blank" rel="noopener noreferrer">Écouter maintenant</a>
@@ -371,14 +371,14 @@
       </div>
 
       <!-- Slide 03 — C19 Live Sessions -->
-      <div class="mq-hero__slide">
+      <div class="mq-hero__slide" aria-hidden="true">
         <div class="bg">
           <img src="assets/events_report/c19-live.webp" alt="C19 Live Sessions — DJ set Maison Quasar" loading="lazy" />
           <div class="mq-hero__grade"></div>
         </div>
         <div class="mq-hero__inner">
           <div class="mq-hero__eyebrow"><span>DJ Sets · Studio 3S, Paris</span></div>
-          <h1 class="mq-hero__h">C19 Live<br/>Sessions</h1>
+          <h2 class="mq-hero__h">C19 Live<br/>Sessions</h2>
           <p class="mq-hero__sub">Cuisine19 c'est notre résidence mensuelle au TDTF — un rendez-vous DJ chaque premier vendredi du mois dans le 19e. Les DJ passent également enregistrer des lives sessions au studio : disponibles sur YouTube et SoundCloud.</p>
           <div class="mq-hero__ctas">
             <a class="q-btn q-btn--ghost-dark" href="#c19">Voir les sets</a>
@@ -387,14 +387,14 @@
       </div>
 
       <!-- Slide 04 — Événements -->
-      <div class="mq-hero__slide">
+      <div class="mq-hero__slide" aria-hidden="true">
         <div class="bg">
           <img src="assets/events_report/evenements.webp" alt="Maison Quasar — concert et soirée" loading="lazy" />
           <div class="mq-hero__grade"></div>
         </div>
         <div class="mq-hero__inner">
           <div class="mq-hero__eyebrow"><span>Le collectif sur scène</span></div>
-          <h1 class="mq-hero__h">Nos<br/>événements</h1>
+          <h2 class="mq-hero__h">Nos<br/>événements</h2>
           <p class="mq-hero__sub">Le collectif prolonge la création sur scène : concerts, DJ sets, release parties — la scène s'inscrit pleinement dans l'ADN Maison Quasar.</p>
           <div class="mq-hero__ctas">
             <a class="q-btn q-btn--ghost-dark" href="#events">Voir l'agenda</a>
@@ -407,10 +407,10 @@
     <div class="mq-hero__controls">
       <div class="mq-hero__counter">01 / 04</div>
       <div class="mq-hero__dots">
-        <button class="mq-hero__dot is-active" aria-label="Aller au slide 1"></button>
-        <button class="mq-hero__dot" aria-label="Aller au slide 2"></button>
-        <button class="mq-hero__dot" aria-label="Aller au slide 3"></button>
-        <button class="mq-hero__dot" aria-label="Aller au slide 4"></button>
+        <button class="mq-hero__dot is-active" aria-label="Aller à la diapositive 1" aria-current="true"></button>
+        <button class="mq-hero__dot" aria-label="Aller à la diapositive 2" aria-current="false"></button>
+        <button class="mq-hero__dot" aria-label="Aller à la diapositive 3" aria-current="false"></button>
+        <button class="mq-hero__dot" aria-label="Aller à la diapositive 4" aria-current="false"></button>
       </div>
       <div class="mq-hero__arrows">
         <button class="mq-hero__arrow" data-dir="prev" aria-label="Précédent">
