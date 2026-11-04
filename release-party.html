@@ -194,7 +194,7 @@
     </div>
   </div>
 
-  <script src="js/consent.js?v=3"></script>
+  <script src="js/consent.js?v=4"></script>
   <script>
     /* ── Release party page: ticket link + tracking + interest form ──
        CONFIG — the only values to edit:
@@ -240,6 +240,9 @@
           e.preventDefault();
           window.mqTrack("rp_click_billetterie", { source: source, placement: a.closest(".mq-nav") ? "nav" : "page" },
             { meta: "RP_ClickBilletterie" });
+          // Shared "intent" event (ticket click OR email sign-up) → one
+          // custom conversion to optimise the ads on.
+          window.mqTrack("rp_intent", { source: source, action: "billetterie" }, { meta: "RP_Intent" });
           setTimeout(function () { window.location.href = ticketUrl; }, 300);
         });
       });
@@ -288,6 +291,7 @@
             msg.classList.add("is-ok");
             form.reset();
             window.mqTrack && window.mqTrack("rp_lead", { source: source }, { meta: "Lead" });
+            window.mqTrack && window.mqTrack("rp_intent", { source: source, action: "email" }, { meta: "RP_Intent" });
           })
           .catch(function () {
             msg.textContent = "Oups, l'envoi a échoué. Réessaie dans un instant.";
