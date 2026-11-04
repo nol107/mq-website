@@ -41,8 +41,8 @@ button { font-family: inherit; }
 .q-btn--ghost-light:hover { background: #000; color: #fff; }
 .q-btn--ghost-light:active { opacity: 0.85; }
 
-.q-btn--filled-cool { background: #f0f0fa; color: #000; border-color: transparent; }
-.q-btn--filled-cool:hover { background: #e6e6f0; }
+.q-btn--filled-cool, .q-btn--filled-cool:visited { background: #f0f0fa; color: #000; border-color: transparent; text-decoration: none; }
+.q-btn--filled-cool:hover { background: #e6e6f0; color: #000; opacity: 1; }
 
 /* === Pulse keyframe (live indicators) =========================== */
 @keyframes q-pulse {

@@ -92,7 +92,12 @@
 
     .rp-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
     .rp-cta .q-btn { font-size: 15px; padding: clamp(14px, 2.2vh, 20px) 36px; }
-    .rp-cta__note { font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: 0.3px; }
+    /* tokens.css colours a:visited white and fades a:hover: keep the
+       button dark-on-light in every state. */
+    .rp-cta .q-btn, .rp-cta .q-btn:visited, .rp-cta .q-btn:hover, .rp-cta .q-btn:focus {
+      background: #fff; color: #000; text-decoration: none; opacity: 1;
+    }
+    .rp-cta .q-btn:hover { background: #dcdcf0; }
 
     .rp-interest { margin-top: clamp(14px, 2.6vh, 26px); max-width: 520px; }
     .rp-interest[hidden] { display: none; }
@@ -128,7 +133,6 @@
       .rp-facts li { padding: 5px 0; font-size: 13px; }
       .rp-facts .k { flex-basis: 56px; }
       .rp-cta .q-btn { width: 100%; padding: 15px 24px; }
-      .rp-cta__note { display: none; }
       .rp-interest { margin-top: 10px; }
       .rp-interest__p { font-size: 12px; margin-bottom: 6px; }
       /* On phones the form opens on demand; the poster shrinks to make room. */
@@ -159,8 +163,7 @@
       <h1 class="rp-sr">Quasar Sessions Vol.2 – Release Party, samedi 21 novembre 2026 au ciNey, Paris 18e</h1>
 
       <div class="rp-cta">
-        <a class="q-btn q-btn--filled-cool" href="https://shotgun.live/events/quasar-session-vol-2-release-party?utm_source=site-mq" data-rp-buy>Prendre ma place</a>
-        <span class="rp-cta__note">Billetterie Shotgun</span>
+        <a class="q-btn q-btn--filled-cool" href="https://shotgun.live/events/quasar-session-vol-2-release-party?utm_source=site-mq" data-rp-buy>Sécurise ta place sur Shotgun</a>
       </div>
 
       <!-- Interest form: shown only once BREVO_ACTION is set in the script below. -->
@@ -220,6 +223,13 @@
       var source = clean(params.get("utm_source") || params.get("from")) || "direct";
       var ticketUrl = EVENT_URL + "?utm_source=" + encodeURIComponent(SITE_SOURCE) +
         "&utm_medium=" + encodeURIComponent(source);
+      // Keep the ad context on the Shotgun side: utm_campaign shows in the
+      // order export, and fbclid lets Shotgun's own pixel set its _fbc
+      // click-ID cookie, so a purchase can be tied back to the Meta ad click.
+      var campaign = clean(params.get("utm_campaign"));
+      if (campaign) ticketUrl += "&utm_campaign=" + encodeURIComponent(campaign);
+      var fbclid = (params.get("fbclid") || "").replace(/[^A-Za-z0-9_.-]/g, "").slice(0, 500);
+      if (fbclid) ticketUrl += "&fbclid=" + encodeURIComponent(fbclid);
 
       var buyLinks = document.querySelectorAll("[data-rp-buy]");
       buyLinks.forEach(function (a) {
