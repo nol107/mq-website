@@ -1,11 +1,28 @@
-// ── Cookie consent + Google Analytics 4 (CNIL-compliant) ──
+// ── Cookie consent + Google Analytics 4 + Meta Pixel (CNIL-compliant) ──
 // On the redesigned pages the prompt renders inline in the footer
 // (the brand bans floating banners / overlays). Legacy pages that
 // have no [data-consent-slot] fall back to the small corner banner.
+//
+// Nothing is loaded before the visitor clicks "Accepter".
+// The storage key is versioned: when the purposes change (v2 adds the
+// Meta pixel), everyone is asked again, as the CNIL requires consent
+// to be specific to each purpose.
+//
+// Tracking helper for pages: window.mqTrack(name, params, opts)
+//   - sends a GA4 event `name` if GA is loaded
+//   - sends a Meta event if the pixel is loaded:
+//       opts.meta = 'Lead' (standard event) or a custom name (trackCustom)
+//   Calls made before consent are simply dropped.
 (function() {
   var GA_ID = 'G-6XG6Q19H4H';
-  var STORAGE_KEY = 'mq_consent';
-  var consent = localStorage.getItem(STORAGE_KEY);
+  // Meta dataset shared with Shotgun & SubmitHub ("Shotgun Release 2").
+  // Never send ViewContent from this site: on this dataset ViewContent is
+  // the SubmitHub "click to a streaming platform" conversion used by the
+  // music campaigns.
+  var META_PIXEL_ID = '1658842735925586';
+  var STORAGE_KEY = 'mq_consent_v2';
+  var consent = null;
+  try { consent = localStorage.getItem(STORAGE_KEY); } catch (e) {}
 
   function loadGA() {
     var s = document.createElement('script');
@@ -19,14 +36,51 @@
     gtag('config', GA_ID, { anonymize_ip: true });
   }
 
-  var CONSENT_TEXT = 'Nous utilisons des cookies de mesure d’audience (Google Analytics) ' +
-    'pour comprendre comment vous utilisez le site. Vos données sont anonymisées.';
+  function loadMetaPixel() {
+    /* Meta Pixel base code */
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', META_PIXEL_ID);
+    window.fbq('track', 'PageView');
+  }
+
+  function loadAll() {
+    loadGA();
+    loadMetaPixel();
+    document.dispatchEvent(new CustomEvent('mq:consent-granted'));
+  }
+
+  window.mqTrack = function(name, params, opts) {
+    params = params || {};
+    opts = opts || {};
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, params);
+    }
+    if (typeof window.fbq === 'function' && opts.meta) {
+      var STANDARD = ['Lead', 'Contact', 'CompleteRegistration', 'Schedule'];
+      if (STANDARD.indexOf(opts.meta) !== -1) {
+        window.fbq('track', opts.meta, params);
+      } else {
+        window.fbq('trackCustom', opts.meta, params);
+      }
+    }
+  };
+  window.mqHasConsent = function() { return consent === 'accept'; };
+
+  var CONSENT_TEXT = 'Avec votre accord, nous utilisons des cookies de mesure d’audience ' +
+    '(Google Analytics) et le pixel Meta, pour comprendre comment le site est utilisé ' +
+    'et mesurer nos publicités Instagram et Facebook. ' +
+    '<a href="/mentions-legales.html">En savoir plus</a>';
 
   function handleChoice(choice, cleanup) {
     if (!choice) return;
-    localStorage.setItem(STORAGE_KEY, choice);
+    consent = choice;
+    try { localStorage.setItem(STORAGE_KEY, choice); } catch (e) {}
     cleanup();
-    if (choice === 'accept') loadGA();
+    if (choice === 'accept') loadAll();
   }
 
   // Redesigned pages: render the prompt inline in the footer.
@@ -74,7 +128,7 @@
   }
 
   if (consent === 'accept') {
-    loadGA();
+    loadAll();
   } else if (!consent) {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', renderPrompt);
