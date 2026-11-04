@@ -210,7 +210,7 @@
       "use strict";
       var EVENT_URL = "https://shotgun.live/events/quasar-session-vol-2-release-party";
       var SITE_SOURCE = "site-mq";
-      var BREVO_ACTION = "";
+      var BREVO_ACTION = "https://1e948468.sibforms.com/serve/MUIFACSeADJQFYmT5Xze7s-VPs9ssqe7tW2t3rxSsuJJNkx5LgXLF317fmyHLs8c1WOGd69aegeyBjP2Ipqg-5BAmUI5OQKw8FdpxdTDSHkTBuzdWxeEd2VqWCtzRZhPCCRDjRCxgncU4gHd_2Mi8sr4GoN8hFrV5UFQ7EOY6oYjc9SmUPc4v3PVP8WkGDYGFM-f0FS-Z4JKrOJRVA==";
 
       function clean(v) { return (v || "").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 60); }
 
@@ -267,13 +267,14 @@
         }
         var data = new FormData(form);
         data.append("locale", "fr");
+        data.append("html_type", "simple");
         var btn = form.querySelector("button[type=submit]");
         btn.disabled = true;
         // Brevo does not send CORS headers: the response is opaque, so a
         // resolved fetch means "sent", not "confirmed".
         fetch(BREVO_ACTION, { method: "POST", mode: "no-cors", body: data })
           .then(function () {
-            msg.textContent = "C'est noté, on te prévient. À très vite le 21 !";
+            msg.textContent = "C'est noté ! On te tient au courant de l'avancée de la billetterie.";
             msg.classList.add("is-ok");
             form.reset();
             window.mqTrack && window.mqTrack("rp_lead", { source: source }, { meta: "Lead" });
