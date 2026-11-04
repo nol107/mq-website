@@ -66,205 +66,140 @@
   </script>
 
   <style>
-    .rp { max-width: 1200px; margin: 0 auto; padding: 120px 32px 0; }
-    @media (max-width: 767px) { .rp { padding: 96px 18px 0; } }
+    /* One-screen page: everything (tickets, interest, consent) is visible on arrival. */
+    html, body { height: 100%; }
+    .rp-body { height: 100vh; height: 100svh; display: flex; flex-direction: column; overflow: hidden; }
+    @media (max-height: 560px) { .rp-body { height: auto; min-height: 100svh; overflow: visible; } }
 
-    .rp-hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 56px; align-items: start; }
-    @media (max-width: 900px) { .rp-hero { grid-template-columns: 1fr; gap: 32px; } }
-    .rp-hero__poster { background: var(--color-canvas-night-soft); aspect-ratio: 4 / 5; overflow: hidden; }
-    .rp-hero__poster img { width: 100%; height: 100%; object-fit: cover; }
+    .rp-top { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 32px; }
+    .rp-top .mq-nav__wm { color: #fff; text-decoration: none; }
+    .rp-top__link { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; }
+    .rp-top__link:hover { color: #fff; }
 
-    .rp-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin: 0 0 16px; }
-    .rp-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 6vw, 76px); line-height: 0.95; letter-spacing: 1.2px; text-transform: uppercase; margin: 0 0 28px; text-wrap: balance; }
-    .rp-facts { list-style: none; padding: 0; margin: 0 0 32px; border-top: 1px solid var(--color-hairline-on-dark); }
-    .rp-facts li { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--color-hairline-on-dark); font-size: 15px; letter-spacing: 0.3px; }
-    .rp-facts .k { flex: 0 0 96px; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.55); padding-top: 3px; }
+    .rp { flex: 1 1 auto; min-height: 0; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 32px 16px;
+          display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+    .rp__poster { align-self: stretch; height: 100%; min-height: 0; display: flex; align-items: center; justify-content: center; }
+    .rp__poster img { height: 100%; max-height: 100%; width: auto; max-width: 100%; aspect-ratio: 4 / 5; object-fit: contain; }
+
+    .rp__info { min-width: 0; }
+    .rp-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin: 0 0 clamp(8px, 1.5vh, 14px); }
+    .rp-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 6.2vh, 68px); line-height: 0.95; letter-spacing: 1.2px; text-transform: uppercase; margin: 0 0 clamp(12px, 2.4vh, 24px); }
+    .rp-facts { list-style: none; padding: 0; margin: 0 0 clamp(14px, 2.6vh, 26px); border-top: 1px solid var(--color-hairline-on-dark); }
+    .rp-facts li { display: flex; gap: 16px; padding: clamp(6px, 1.2vh, 11px) 0; border-bottom: 1px solid var(--color-hairline-on-dark); font-size: clamp(13px, 1.8vh, 15px); letter-spacing: 0.3px; line-height: 1.35; }
+    .rp-facts .k { flex: 0 0 76px; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.55); padding-top: 3px; }
     .rp-facts a { color: #fff; }
 
-    .rp-cta { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
-    .rp-cta .q-btn { font-size: 15px; padding: 20px 36px; }
+    .rp-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .rp-cta .q-btn { font-size: 15px; padding: clamp(14px, 2.2vh, 20px) 36px; }
     .rp-cta__note { font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: 0.3px; }
 
-    .rp-interest { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--color-hairline-on-dark); max-width: 520px; }
+    .rp-interest { margin-top: clamp(14px, 2.6vh, 26px); max-width: 520px; }
     .rp-interest[hidden] { display: none; }
-    .rp-interest__h { font-family: var(--font-display); font-weight: 700; font-size: 20px; letter-spacing: 1px; text-transform: uppercase; margin: 0 0 8px; }
-    .rp-interest__p { font-size: 14px; color: rgba(255,255,255,0.75); margin: 0 0 16px; line-height: 1.5; }
-    .rp-form { display: flex; gap: 10px; flex-wrap: wrap; }
-    .rp-form input[type="email"] { flex: 1 1 220px; min-width: 0; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.4); border-radius: var(--radius-pill); padding: 14px 20px; font: inherit; font-size: 14px; }
+    .rp-interest__p { font-size: 13px; color: rgba(255,255,255,0.75); margin: 0 0 10px; line-height: 1.45; }
+    .rp-interest__p strong { color: #fff; }
+    .rp-interest__toggle { display: none; background: none; border: 0; padding: 0; font: inherit; font-size: 12px; color: rgba(255,255,255,0.75); text-decoration: underline; cursor: pointer; }
+    .rp-form { display: flex; gap: 8px; flex-wrap: wrap; }
+    .rp-form input[type="email"] { flex: 1 1 200px; min-width: 0; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.4); border-radius: var(--radius-pill); padding: 12px 18px; font: inherit; font-size: 14px; }
     .rp-form input[type="email"]:focus { outline: none; border-color: #fff; }
-    .rp-form .q-btn { padding: 14px 22px; }
-    .rp-form__consent { flex-basis: 100%; display: flex; gap: 10px; align-items: flex-start; font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.45; }
-    .rp-form__consent input { margin-top: 2px; accent-color: #fff; }
+    .rp-form .q-btn { padding: 12px 20px; }
+    .rp-form__consent { flex-basis: 100%; display: flex; gap: 8px; align-items: flex-start; font-size: 11px; color: rgba(255,255,255,0.6); line-height: 1.4; }
+    .rp-form__consent input { margin-top: 1px; accent-color: #fff; }
     .rp-form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-    .rp-form__msg { flex-basis: 100%; font-size: 13px; margin: 4px 0 0; min-height: 1em; }
+    .rp-form__msg { flex-basis: 100%; font-size: 12px; margin: 0; min-height: 0; }
+    .rp-form__msg:empty { display: none; }
     .rp-form__msg.is-ok { color: #fff; }
     .rp-form__msg.is-err { color: #ff5a3c; }
 
-    .rp-band { padding: 96px 0 0; }
-    .rp-band__head { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin: 0 0 12px; }
-    .rp-band__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 4.5vw, 52px); line-height: 1; letter-spacing: 1.2px; text-transform: uppercase; margin: 0 0 32px; }
-    .rp-lineup { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-hairline-on-dark); }
-    .rp-lineup li { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--color-hairline-on-dark); }
-    .rp-lineup .name { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 3vw, 36px); letter-spacing: 1px; text-transform: uppercase; }
-    .rp-lineup .tag { font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .rp-bottom { flex: 0 0 auto; padding: 0 32px; }
+    .rp-bottom .mq-footer__consent { padding: 12px 0; border-bottom: 0; border-top: 1px solid var(--color-hairline-on-dark); }
+    .rp-legal { max-width: 1200px; margin: 0 auto; padding: 10px 0 14px; display: flex; justify-content: space-between; gap: 12px; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.45); border-top: 1px solid var(--color-hairline-on-dark); }
+    .rp-legal a { color: rgba(255,255,255,0.6); }
 
-    .rp-final { padding: 96px 0; text-align: left; }
-    .rp-final p { font-size: 15px; color: rgba(255,255,255,0.75); margin: 0 0 24px; max-width: 560px; line-height: 1.55; }
+    /* Phones and narrow screens: poster on top, shrinks to leave room for the CTA. */
+    @media (max-width: 900px) {
+      .rp-top { padding: 12px 18px; }
+      .rp { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; gap: 12px; padding: 0 18px 10px; align-items: stretch; }
+      .rp__poster img { height: 100%; }
+      .rp-title { font-size: clamp(24px, 4.2vh, 40px); margin-bottom: 10px; }
+      .rp-title br { display: none; }
+      .rp-eyebrow { margin-bottom: 6px; }
+      .rp-facts { margin-bottom: 12px; }
+      .rp-facts li { padding: 5px 0; font-size: 13px; }
+      .rp-facts .k { flex-basis: 56px; }
+      .rp-cta .q-btn { width: 100%; padding: 15px 24px; }
+      .rp-cta__note { display: none; }
+      .rp-interest { margin-top: 10px; }
+      .rp-interest__p { font-size: 12px; margin-bottom: 6px; }
+      /* On phones the form opens on demand and takes the poster's room. */
+      .rp-interest__toggle { display: inline; }
+      .rp-interest__p, .rp-interest__body { display: none; }
+      .rp-show-form .rp-interest__p, .rp-show-form .rp-interest__body { display: block; }
+      .rp-show-form .rp-interest__toggle { display: none; }
+      .rp-show-form .rp__poster { display: none; }
+      .rp-show-form .rp { grid-template-rows: auto; align-content: center; }
+      .rp-bottom { padding: 0 18px; }
+      .rp-bottom .mq-footer__consent { padding: 8px 0; gap: 8px; }
+      .rp-bottom .mq-footer__consent-text { font-size: 10px; line-height: 1.4; }
+      .rp-legal { display: none; }
+    }
   </style>
 </head>
-<body>
+<body class="rp-body">
 
-  <!-- ═══ Nav ═══ -->
-  <nav class="mq-nav">
+  <header class="rp-top">
     <a class="mq-nav__wm" href="index.html">Maison Quasar</a>
-    <div class="mq-nav__items">
-      <a class="mq-nav__item" href="index.html">Accueil</a>
-      <a class="mq-nav__item" href="index.html#sessions">Quasar Sessions</a>
-      <a class="mq-nav__item" href="index.html#c19">C19 Live Sessions</a>
-      <a class="mq-nav__item is-active" href="index.html#events">Événements</a>
-      <a class="mq-nav__item" href="studio.html">Studio</a>
-      <a class="mq-nav__item" href="a-propos.html">À propos</a>
-      <a class="mq-nav__item" href="journal/index.html">Journal</a>
-    </div>
-    <a class="mq-nav__cta" href="#billetterie" data-rp-buy>Prendre ma place</a>
-    <button class="mq-nav__burger" aria-label="Ouvrir le menu">
-      <img src="assets/icons/menu.svg" alt="" />
-    </button>
-  </nav>
+    <a class="rp-top__link" href="index.html">Le collectif →</a>
+  </header>
 
-  <!-- ═══ Mobile menu ═══ -->
-  <div class="mq-mobilemenu" role="dialog" aria-label="Menu" aria-hidden="true">
-    <div class="mq-mobilemenu__top">
-      <span class="mq-nav__wm">Maison Quasar</span>
-      <button class="mq-mobilemenu__close" aria-label="Fermer le menu">
-        <img src="assets/icons/close.svg" alt="" />
-      </button>
+  <main class="rp" id="billetterie">
+    <div class="rp__poster">
+      <img src="Affiches/release-party-vol2.webp" alt="Affiche Quasar Sessions Release Party — 21.11.26, Le ciNey : 21Corazon, Aïssa, Dee Zen, Jaleb, Jeune Deep, Jos'Art, Noëma" width="1080" height="1350" />
     </div>
-    <div class="mq-mobilemenu__items">
-      <a class="mq-mobilemenu__item" href="index.html">Accueil</a>
-      <a class="mq-mobilemenu__item" href="index.html#sessions">Quasar Sessions</a>
-      <a class="mq-mobilemenu__item" href="index.html#c19">C19 Live Sessions</a>
-      <a class="mq-mobilemenu__item" href="index.html#events">Événements</a>
-      <a class="mq-mobilemenu__item" href="studio.html">Studio</a>
-      <a class="mq-mobilemenu__item" href="a-propos.html">À propos</a>
-      <a class="mq-mobilemenu__item" href="journal/index.html">Journal</a>
+
+    <div class="rp__info">
+      <p class="rp-eyebrow">Release party · Quasar Sessions Vol.2</p>
+      <h1 class="rp-title">7 artistes.<br/> 100 % live.<br/> Un samedi soir.</h1>
+
+      <ul class="rp-facts">
+        <li><span class="k">Date</span><span>Samedi 21 novembre · 18h – 00h</span></li>
+        <li><span class="k">Lieu</span><span>Le ciNey · <a href="https://www.google.com/maps/search/?api=1&amp;query=126-128+boulevard+Ney+75018+Paris" target="_blank" rel="noopener noreferrer">126-128 bd Ney, Paris 18ᵉ</a></span></li>
+        <li><span class="k">Tarifs</span><span>Early 6 € · Standard 9 € · Group x4 (4 pour 3)</span></li>
+      </ul>
+
+      <div class="rp-cta">
+        <a class="q-btn q-btn--filled-cool" href="https://shotgun.live/events/quasar-session-vol-2-release-party?utm_source=site" data-rp-buy>Prendre ma place</a>
+        <span class="rp-cta__note">Billetterie Shotgun</span>
+      </div>
+
+      <!-- Interest form: shown only once BREVO_ACTION is set in the script below. -->
+      <div class="rp-interest" data-rp-interest hidden>
+        <button class="rp-interest__toggle" type="button" data-rp-toggle>Pas encore sûr·e ? Être prévenu·e par mail</button>
+        <p class="rp-interest__p"><strong>Pas encore sûr·e ?</strong> Laisse ton mail, on te prévient avant la fin des early bird et la veille de la soirée.</p>
+        <div class="rp-interest__body">
+        <form class="rp-form" data-rp-form novalidate>
+          <label class="rp-form__hp" aria-hidden="true">Ne pas remplir <input type="text" name="email_address_check" tabindex="-1" autocomplete="off" /></label>
+          <input type="email" name="EMAIL" placeholder="ton@email.fr" autocomplete="email" required aria-label="Adresse email" />
+          <button class="q-btn q-btn--ghost-dark" type="submit">Me prévenir</button>
+          <label class="rp-form__consent">
+            <input type="checkbox" name="OPT_IN" value="1" required />
+            <span>J'accepte de recevoir des emails de Maison Quasar sur cette soirée et nos prochains événements. Désinscription à tout moment.</span>
+          </label>
+          <p class="rp-form__msg" data-rp-msg role="status" aria-live="polite"></p>
+        </form>
+        </div>
+      </div>
     </div>
-    <div class="mq-mobilemenu__foot">
-      <a href="https://www.instagram.com/maisonquasar" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://www.youtube.com/@MaisonQuasar" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a href="https://open.spotify.com/intl-fr/artist/0p0ZDJlIwvyU4HWfQldMQt" target="_blank" rel="noopener noreferrer">Spotify</a>
-      <a href="https://www.tiktok.com/@maison.quasar" target="_blank" rel="noopener noreferrer">TikTok</a>
+  </main>
+
+  <div class="rp-bottom">
+    <div class="mq-footer__consent" data-consent-slot hidden></div>
+    <div class="rp-legal">
+      <span>© 2026 Maison Quasar · Paris</span>
+      <a href="mentions-legales.html">Mentions légales</a>
     </div>
   </div>
 
-  <main class="rp">
-
-    <!-- ═══ Hero ═══ -->
-    <section class="rp-hero" id="billetterie">
-      <div class="rp-hero__poster">
-        <img src="Affiches/release-party-vol2.webp" alt="Affiche Quasar Sessions Release Party — 21.11.26, Le ciNey : 21Corazon, Aïssa, Dee Zen, Jaleb, Jeune Deep, Jos'Art, Noëma" width="1080" height="1350" />
-      </div>
-
-      <div>
-        <p class="rp-eyebrow">Release party · Quasar Sessions Vol.2</p>
-        <h1 class="rp-title">7 artistes.<br/>100 % live.<br/>Un samedi soir.</h1>
-
-        <ul class="rp-facts">
-          <li><span class="k">Date</span><span>Samedi 21 novembre 2026 · 18h – 00h</span></li>
-          <li><span class="k">Lieu</span><span>Le ciNey · <a href="https://www.google.com/maps/search/?api=1&amp;query=126-128+boulevard+Ney+75018+Paris" target="_blank" rel="noopener noreferrer">126-128 boulevard Ney, Paris 18ᵉ</a></span></li>
-          <li><span class="k">Tarifs</span><span>Early 6 € · Standard 9 € · Group x4 : 4 places pour le prix de 3</span></li>
-        </ul>
-
-        <div class="rp-cta">
-          <a class="q-btn q-btn--filled-cool" href="https://shotgun.live/events/quasar-session-vol-2-release-party?utm_source=site" data-rp-buy>Prendre ma place</a>
-          <span class="rp-cta__note">Billetterie sécurisée sur Shotgun</span>
-        </div>
-
-        <!-- Interest form: shown only once BREVO_ACTION is set in the script below. -->
-        <div class="rp-interest" data-rp-interest hidden>
-          <h2 class="rp-interest__h">Pas encore sûr·e ?</h2>
-          <p class="rp-interest__p">Laisse ton mail : on te prévient avant la fin des places early bird, et la veille de la soirée.</p>
-          <form class="rp-form" data-rp-form novalidate>
-            <label class="rp-form__hp" aria-hidden="true">Ne pas remplir <input type="text" name="email_address_check" tabindex="-1" autocomplete="off" /></label>
-            <input type="email" name="EMAIL" placeholder="ton@email.fr" autocomplete="email" required aria-label="Adresse email" />
-            <button class="q-btn q-btn--ghost-dark" type="submit">Me prévenir</button>
-            <label class="rp-form__consent">
-              <input type="checkbox" name="OPT_IN" value="1" required />
-              <span>J'accepte de recevoir des emails de Maison Quasar sur cette soirée et nos prochains événements. Désinscription possible à tout moment.</span>
-            </label>
-            <p class="rp-form__msg" data-rp-msg role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ Line-up ═══ -->
-    <section class="rp-band">
-      <p class="rp-band__head">Line-up</p>
-      <h2 class="rp-band__title">Sur scène le 21</h2>
-      <ul class="rp-lineup">
-        <li><span class="name">21Corazon</span><span class="tag">Live</span></li>
-        <li><span class="name">Aïssa</span><span class="tag">Live</span></li>
-        <li><span class="name">Dee Zen</span><span class="tag">Live</span></li>
-        <li><span class="name">Jaleb</span><span class="tag">Live</span></li>
-        <li><span class="name">Jeune Deep</span><span class="tag">Live</span></li>
-        <li><span class="name">Jos'Art</span><span class="tag">Live</span></li>
-        <li><span class="name">Noëma</span><span class="tag">Live</span></li>
-      </ul>
-    </section>
-
-    <!-- ═══ Final CTA ═══ -->
-    <section class="rp-final">
-      <p class="rp-band__head">Quasar Sessions Vol.2</p>
-      <h2 class="rp-band__title">L'EP sort le 20.<br/>On le fête le 21.</h2>
-      <p>Six nouveaux titres, six clips, et une soirée pour les entendre en live, avec les artistes qui les ont faits.</p>
-      <a class="q-btn q-btn--filled-cool" href="https://shotgun.live/events/quasar-session-vol-2-release-party?utm_source=site" data-rp-buy>Prendre ma place</a>
-    </section>
-
-  </main>
-
-  <!-- ═══ Footer ═══ -->
-  <footer class="mq-footer">
-    <div class="mq-footer__top">
-      <div>
-        <div class="mq-footer__wordmark">Maison<br/>Quasar</div>
-        <p class="mq-footer__tag">
-          Collectif musical parisien<br/>Studio · Scène · Sorties
-        </p>
-      </div>
-      <div class="mq-footer__col">
-        <h4>Le collectif</h4>
-        <a class="mq-footer__link" href="a-propos.html">À propos</a>
-        <a class="mq-footer__link" href="studio.html">Notre studio</a>
-        <a class="mq-footer__link" href="journal/index.html">Journal</a>
-        <a class="mq-footer__link" href="index.html#sessions">Quasar Sessions</a>
-        <a class="mq-footer__link" href="index.html#c19">C19 Live</a>
-        <a class="mq-footer__link" href="sitemap.html">Plan du site</a>
-      </div>
-      <div class="mq-footer__col">
-        <h4>Écoutez</h4>
-        <a class="mq-footer__link" href="https://distrokid.com/hyperfollow/maisonquasar/quasar-sessions" target="_blank" rel="noopener noreferrer">Quasar Sessions · EP</a>
-        <a class="mq-footer__link" href="https://open.spotify.com/intl-fr/artist/0p0ZDJlIwvyU4HWfQldMQt" target="_blank" rel="noopener noreferrer">Spotify</a>
-        <a class="mq-footer__link" href="https://soundcloud.com/maison-quasar" target="_blank" rel="noopener noreferrer">SoundCloud</a>
-        <a class="mq-footer__link" href="https://www.youtube.com/@MaisonQuasar" target="_blank" rel="noopener noreferrer">YouTube</a>
-      </div>
-      <div class="mq-footer__col">
-        <h4>Suivez</h4>
-        <a class="mq-footer__link" href="https://www.instagram.com/maisonquasar" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a class="mq-footer__link" href="https://www.tiktok.com/@maison.quasar" target="_blank" rel="noopener noreferrer">TikTok</a>
-        <a class="mq-footer__link" href="https://3s-studios.setmore.com/" target="_blank" rel="noopener noreferrer">Réserver le studio</a>
-        <a class="mq-footer__link" href="mailto:contact@maisonquasar.fr">Contact</a>
-      </div>
-    </div>
-    <div class="mq-footer__consent" data-consent-slot hidden></div>
-    <div class="mq-footer__legal">
-      <div>© 2026 Maison Quasar<span class="sep">·</span>Paris, 19<sup>e</sup></div>
-      <div>Studio 3S<span class="sep">·</span><a href="mentions-legales.html">Mentions légales</a><span class="sep">·</span>Crédits</div>
-    </div>
-  </footer>
-
   <script src="js/consent.js"></script>
-  <script src="js/quasar.js"></script>
   <script>
     /* ── Release party page: ticket link + tracking + interest form ──
        CONFIG — the only values to edit:
@@ -315,6 +250,11 @@
       var msg = document.querySelector("[data-rp-msg]");
       if (!BREVO_ACTION || !block || !form) return;
       block.hidden = false;
+      var toggle = document.querySelector("[data-rp-toggle]");
+      if (toggle) toggle.addEventListener("click", function () {
+        document.body.classList.add("rp-show-form");
+        form.elements.EMAIL.focus();
+      });
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
