@@ -127,7 +127,45 @@
     }
   }
 
-  if (consent === 'accept') {
+  // ── Test mode: /page.html?mqdebug=1 ──
+  // For the site owner only: loads GA + pixel for this visit without
+  // showing the prompt and WITHOUT storing a choice (real visitors are not
+  // affected), and shows a small panel saying whether the browser actually
+  // loaded the Meta script and which events were sent.
+  var debug = false;
+  try { debug = new URLSearchParams(location.search).has('mqdebug'); } catch (e) {}
+  if (debug) {
+    consent = 'accept';
+    var log = [];
+    var panel;
+    function draw(status) {
+      if (!panel) {
+        panel = document.createElement('div');
+        panel.style.cssText = 'position:fixed;left:8px;top:8px;z-index:99999;max-width:320px;' +
+          'background:#ffe600;color:#000;font:12px/1.4 monospace;padding:8px 10px;border-radius:6px;';
+        document.body.appendChild(panel);
+      }
+      if (status) panel.dataset.status = status;
+      panel.innerHTML = '<b>MODE TEST PIXEL</b><br>Script Meta : ' + (panel.dataset.status || 'chargement…') +
+        '<br>Pixel : ' + META_PIXEL_ID + '<br>Événements : ' + (log.join(', ') || '—');
+    }
+    var origTrack = window.mqTrack;
+    window.mqTrack = function(name, params, opts) {
+      origTrack(name, params, opts);
+      if (opts && opts.meta) { log.push(opts.meta); if (panel) draw(); }
+    };
+    log.push('PageView');
+    var pending = null;
+    loadAll();
+    var tag = document.querySelector('script[src*="fbevents.js"]');
+    if (tag) {
+      tag.addEventListener('load', function() { pending = 'OK, chargé ✅'; if (panel) draw(pending); });
+      tag.addEventListener('error', function() { pending = 'BLOQUÉ par le navigateur ou un bloqueur ❌'; if (panel) draw(pending); });
+    }
+    function startDebug() { draw(pending); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startDebug);
+    else startDebug();
+  } else if (consent === 'accept') {
     loadAll();
   } else if (!consent) {
     if (document.readyState === 'loading') {
