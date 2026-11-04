@@ -248,7 +248,7 @@
       });
 
       // Page view as a custom Meta event (never ViewContent: see js/consent.js).
-      function trackView() { window.mqTrack && window.mqTrack("rp_view", { source: source }, { meta: "RP_View" }); }
+      function trackView() { window.mqTrack && window.mqTrack("rp_pageview", { source: source }, { meta: "RP_PageView" }); }
       if (window.mqHasConsent && window.mqHasConsent()) { trackView(); }
       else { document.addEventListener("mq:consent-granted", trackView, { once: true }); }
 
