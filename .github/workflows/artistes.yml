@@ -1,0 +1,60 @@
+name: Mettre à jour « Ils sont passés chez nous »
+
+# Lancé par le bouton du Google Sheet (API workflow_dispatch), à la main
+# depuis l'onglet Actions, ou chaque nuit en filet de sécurité.
+on:
+  workflow_dispatch:
+  # TEMPORAIRE (aperçu) : génère la page sur la branche artistes à chaque push.
+  # À retirer avant la fusion dans main.
+  push:
+    branches: [artistes]
+  schedule:
+    - cron: "17 3 * * *"   # 03:17 UTC
+
+permissions:
+  contents: write   # commit de artistes.html et des photos
+  actions: write    # relancer le déploiement Pages
+
+concurrency:
+  group: artistes
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pillow
+
+      - name: Générer la mosaïque depuis le Sheet
+        env:
+          SHEET_ID: 1_-xbfAIFuSJ2PWuWxTEFGoIaCMG57nYn96qaxyotHsA
+        run: python scripts/build_artistes.py
+
+      - name: Commit si quelque chose a changé
+        id: commit
+        run: |
+          git add artistes.html photos_artistes 2>/dev/null || git add artistes.html
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Rien à mettre à jour."
+          else
+            git config user.name "maisonquasar-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Artistes : mise à jour depuis le Google Sheet"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Un push fait avec GITHUB_TOKEN ne déclenche pas deploy.yml :
+      # on le lance explicitement (workflow_dispatch fait exception).
+      - name: Relancer le déploiement
+        if: steps.commit.outputs.changed == 'true' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main
