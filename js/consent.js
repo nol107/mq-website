@@ -127,7 +127,14 @@
     }
   }
 
-  if (consent === 'accept') {
+  // TEMPORARY test mode: skip the consent prompt and load tracking at once.
+  // Set back to false before going live (CNIL requires prior consent).
+  var TEST_MODE_NO_CONSENT = true;
+
+  if (TEST_MODE_NO_CONSENT) {
+    consent = 'accept';
+    loadAll();
+  } else if (consent === 'accept') {
     loadAll();
   } else if (!consent) {
     if (document.readyState === 'loading') {
