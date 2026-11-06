@@ -158,7 +158,6 @@
   .mq-art__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px 12px;
-    grid-auto-flow: dense; /* comble le trou laissé par une carte ouverte */
   }
   .mq-art-card > summary { gap: 10px; padding-bottom: 12px; }
   .mq-art-card__name { font-size: 20px; }
@@ -168,11 +167,10 @@
   .mq-art-card__toggle { width: 32px; height: 32px; }
   .mq-art-card__initials { font-size: 56px; }
 
-  /* Carte ouverte : pleine largeur, photo en vignette à gauche */
-  .mq-art-card[open] { grid-column: 1 / -1; }
-  .mq-art-card[open] > summary { flex-direction: row; align-items: center; gap: 14px; }
-  .mq-art-card[open] .mq-art-card__media { flex: 0 0 88px; width: 88px; }
-  .mq-art-card[open] .mq-art-card__row { flex: 1; min-width: 0; }
+  /* Carte ouverte : reste à sa place, les morceaux s'affichent sous la photo */
+  .mq-art-track { padding: 12px 0; gap: 8px; }
+  .mq-art-track__title { font-size: 14px; }
+  .mq-art-pill--sm { min-height: 36px; padding: 0 12px; font-size: 10px; letter-spacing: 0.8px; }
 }
 @media (min-width: 480px) and (max-width: 767px) {
   .mq-art__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
