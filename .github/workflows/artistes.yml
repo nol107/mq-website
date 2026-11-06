@@ -4,10 +4,6 @@ name: Mettre à jour « Ils sont passés chez nous »
 # depuis l'onglet Actions, ou chaque nuit en filet de sécurité.
 on:
   workflow_dispatch:
-  # TEMPORAIRE (aperçu) : génère la page sur la branche artistes à chaque push.
-  # À retirer avant la fusion dans main.
-  push:
-    branches: [artistes]
   schedule:
     - cron: "17 3 * * *"   # 03:17 UTC
 
