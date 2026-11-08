@@ -111,15 +111,17 @@ function completerLiens() {
     const vide = function (k) { return C[k] >= 0 && !String(data[r][C[k]]).trim(); };
     const trouve = [];
 
-    // Deezer : lien + photo de l'artiste
-    if (vide('deezer') || (C.photo >= 0 && !avecPhoto[norm_(artiste)])) {
+    // Deezer : lien
+    if (vide('deezer')) {
       const d = deezer_(artiste, recherche, album);
-      if (d) {
-        if (vide('deezer') && d.lien) { ecrire_(sheet, r, C.deezer, d.lien, 'Deezer'); stats.deezer++; trouve.push('deezer'); }
-        if (C.photo >= 0 && !avecPhoto[norm_(artiste)] && vide('photo') && d.photo) {
-          ecrire_(sheet, r, C.photo, d.photo, 'Deezer (photo de l\'artiste)'); stats.photo++;
-          avecPhoto[norm_(artiste)] = true;
-        }
+      if (d && d.lien) { ecrire_(sheet, r, C.deezer, d.lien, 'Deezer'); stats.deezer++; trouve.push('deezer'); }
+    }
+    // Photo de l'artiste (Deezer), une seule par artiste
+    if (C.photo >= 0 && !avecPhoto[norm_(artiste)] && vide('photo')) {
+      const photo = deezerPhoto_(artiste);
+      if (photo) {
+        ecrire_(sheet, r, C.photo, photo, 'Deezer, photo de l\'artiste'); stats.photo++;
+        avecPhoto[norm_(artiste)] = true;
       }
     }
     // Apple Music
@@ -163,6 +165,10 @@ function norm_(s) {
 function titreRecherche_(t) {
   return String(t).split(/\s+[–—-]\s+/)[0].trim();
 }
+/* Les Quasar Sessions sortent sous « Maison Quasar » : on accepte aussi ce nom pour les liens */
+function artisteOk_(cherche, trouve) {
+  return memeArtiste_(cherche, trouve) || memeArtiste_('Maison Quasar', trouve);
+}
 function memeArtiste_(cherche, trouve) {
   const a = norm_(cherche), b = norm_(trouve);
   return a && b && (a === b || b.split(' ').join('') === a.split(' ').join(''));
@@ -170,6 +176,15 @@ function memeArtiste_(cherche, trouve) {
 function memeTitre_(cherche, trouve) {
   const a = norm_(cherche).replace(/ /g, ''), b = norm_(trouve).replace(/ /g, '');
   return a && b && (a === b || b.indexOf(a) === 0 || a.indexOf(b) === 0);
+}
+/* 1er essai « artiste titre » ; sinon « titre Maison Quasar » (sorties Quasar Sessions) */
+function essais_(artiste, titre, chercher) {
+  const qs = [artiste + ' ' + titre, titre + ' Maison Quasar'];
+  for (let i = 0; i < qs.length; i++) {
+    const r = chercher(qs[i]);
+    if (r) return r;
+  }
+  return null;
 }
 function getJson_(url, options) {
   Utilities.sleep(PAUSE_MS);
@@ -179,29 +194,46 @@ function getJson_(url, options) {
   })() };
 }
 
-/* Deezer : API publique sans clé */
+/* Deezer : API publique sans clé (la recherche simple marche mieux que la recherche avancée) */
 function deezer_(artiste, titre, album) {
-  const q = 'artist:"' + artiste + '" ' + (album ? 'album' : 'track') + ':"' + titre + '"';
-  const res = getJson_('https://api.deezer.com/search' + (album ? '/album' : '') + '?limit=10&q=' + encodeURIComponent(q));
+  return essais_(artiste, titre, function (q) { return deezerQ_(q, artiste, titre, album); });
+}
+function deezerQ_(q, artiste, titre, album) {
+  const res = getJson_('https://api.deezer.com/search' + (album ? '/album' : '') + '?limit=15&q=' + encodeURIComponent(q));
   const items = (res.json && res.json.data) || [];
   for (let i = 0; i < items.length; i++) {
     const it = items[i];
-    if (!it.artist || !memeArtiste_(artiste, it.artist.name)) continue;
+    if (!it.artist || !artisteOk_(artiste, it.artist.name)) continue;
     if (!memeTitre_(titre, it.title)) continue;
-    return { lien: it.link, photo: it.artist.picture_xl || '' };
+    return { lien: it.link };
   }
   return null;
+}
+/* Photo de l'artiste : recherche d'artiste Deezer, nom identique, sans l'image par défaut */
+function deezerPhoto_(artiste) {
+  const res = getJson_('https://api.deezer.com/search/artist?limit=10&q=' + encodeURIComponent(artiste));
+  const items = (res.json && res.json.data) || [];
+  for (let i = 0; i < items.length; i++) {
+    const it = items[i];
+    if (!memeArtiste_(artiste, it.name)) continue;
+    const photo = it.picture_xl || '';
+    return /\/artist\/\//.test(photo) ? '' : photo; // « artist// » = pas de photo
+  }
+  return '';
 }
 
 /* Apple Music : API iTunes Search, sans clé */
 function apple_(artiste, titre, album) {
-  const url = 'https://itunes.apple.com/search?country=fr&limit=10&media=music&entity=' +
-    (album ? 'album' : 'song') + '&term=' + encodeURIComponent(artiste + ' ' + titre);
+  return essais_(artiste, titre, function (q) { return appleQ_(q, artiste, titre, album); });
+}
+function appleQ_(q, artiste, titre, album) {
+  const url = 'https://itunes.apple.com/search?country=fr&limit=15&media=music&entity=' +
+    (album ? 'album' : 'song') + '&term=' + encodeURIComponent(q);
   const res = getJson_(url);
   const items = (res.json && res.json.results) || [];
   for (let i = 0; i < items.length; i++) {
     const it = items[i];
-    if (!memeArtiste_(artiste, it.artistName)) continue;
+    if (!artisteOk_(artiste, it.artistName)) continue;
     if (!memeTitre_(titre, album ? it.collectionName : it.trackName)) continue;
     const lien = album ? it.collectionViewUrl : it.trackViewUrl;
     return lien ? lien.replace(/[?&]uo=\d+/, '').replace(/\?$/, '') : null;
@@ -223,8 +255,10 @@ function spotifyToken_() {
   return JSON.parse(res.getContentText()).access_token;
 }
 function spotify_(token, artiste, titre, album) {
+  return essais_(artiste, titre, function (q) { return spotifyQ_(q, token, artiste, titre, album); });
+}
+function spotifyQ_(q, token, artiste, titre, album) {
   const type = album ? 'album' : 'track';
-  const q = (album ? 'album:' : 'track:') + titre + ' artist:' + artiste;
   const res = getJson_('https://api.spotify.com/v1/search?market=FR&limit=10&type=' + type + '&q=' + encodeURIComponent(q),
     { headers: { Authorization: 'Bearer ' + token } });
   if (res.code === 429) {
@@ -234,7 +268,7 @@ function spotify_(token, artiste, titre, album) {
   const items = (res.json && res.json[type + 's'] && res.json[type + 's'].items) || [];
   for (let i = 0; i < items.length; i++) {
     const it = items[i];
-    if (!it || !(it.artists || []).some(function (a) { return memeArtiste_(artiste, a.name); })) continue;
+    if (!it || !(it.artists || []).some(function (a) { return artisteOk_(artiste, a.name); })) continue;
     if (!memeTitre_(titre, it.name)) continue;
     return it.external_urls && it.external_urls.spotify;
   }
