@@ -5,6 +5,7 @@
 Colonnes attendues (ligne 1) :
   artiste | lien_photo | titre | lien_spotify | lien_apple | lien_deezer | ordre
   + optionnelles : real | compo | mix | rec | master  (cases à cocher : ce qui a été fait au studio)
+          | type  (morceau / EP / album ; vide = morceau)
 
 - Une ligne = un morceau. Les lignes d'un même artiste sont regroupées.
 - « ordre » classe les artistes (plus petit = en premier, vide = à la fin).
@@ -87,6 +88,26 @@ def slugify(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-") or "artiste"
 
 
+def norm_type(v):
+    v = (v or "").strip().lower()
+    return "album" if v == "album" else "ep" if v in ("ep", "eps") else "morceau"
+
+
+def count_label(tracks):
+    """Ex. « 1 album · 2 EP · 3 morceaux »."""
+    n = {"album": 0, "ep": 0, "morceau": 0}
+    for t in tracks:
+        n[t["type"]] += 1
+    parts = []
+    if n["album"]:
+        parts.append(f'{n["album"]} album' + ("s" if n["album"] > 1 else ""))
+    if n["ep"]:
+        parts.append(f'{n["ep"]} EP')
+    if n["morceau"]:
+        parts.append(f'{n["morceau"]} morceau' + ("x" if n["morceau"] > 1 else ""))
+    return " · ".join(parts)
+
+
 def is_true(v):
     return (v or "").strip().lower() in TRUE_VALUES
 
@@ -153,6 +174,7 @@ def group(rows):
         if title:
             a["tracks"].append({
                 "title": title,
+                "type": norm_type(r.get("type")),
                 "credits": [(short, full) for k, short, full in CREDITS if is_true(r.get(k))],
                 **{k: safe_url(r.get(k, "")) for k, _ in PLATFORMS},
             })
@@ -173,8 +195,7 @@ def render(artists):
                 break
         if not photo:
             photo = get_photo("", slug)  # sinon, photo précédente si elle existe
-        n = len(a["tracks"])
-        count = f"{n} morceau" + ("x" if n > 1 else "")
+        count = count_label(a["tracks"])
         media = (f'<img src="{e(photo)}" alt="{e(a["name"])}" loading="lazy" width="900" height="900" />'
                  if photo else f'<span class="mq-art-card__initials" aria-hidden="true">{e(a["name"][:2])}</span>')
         tracks = []
@@ -185,7 +206,9 @@ def render(artists):
                 for k, label in PLATFORMS if t[k]
             )
             tracks.append(
-                f'          <li class="mq-art-track"><span class="mq-art-track__title">{e(t["title"])}</span>'
+                f'          <li class="mq-art-track"><span class="mq-art-track__title">{e(t["title"])}'
+                + ({"ep": '<span class="mq-art-track__type">EP</span>', "album": '<span class="mq-art-track__type">Album</span>'}.get(t["type"], ""))
+                + "</span>"
                 + (f'<span class="mq-art-track__credits"><span class="mq-art-track__credits-label">Au studio</span>'
                    + "".join(f'<abbr title="{full}">{short}</abbr>' for short, full in t["credits"])
                    + "</span>" if t["credits"] else "")

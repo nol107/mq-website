@@ -187,3 +187,10 @@
   padding: 3px 8px; border-radius: var(--radius-pill);
   background: #1f1f23; color: #fff;
 }
+
+/* Étiquette de projet (colonne « type » du Sheet : EP / album) */
+.mq-art-track__type {
+  display: inline-block; vertical-align: 2px; margin-left: 8px;
+  padding: 2px 7px; border: 1px solid rgba(255,255,255,0.6); border-radius: 4px;
+  font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+}
