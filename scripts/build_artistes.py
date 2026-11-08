@@ -4,7 +4,7 @@
 
 Colonnes attendues (ligne 1) :
   artiste | lien_photo | titre | lien_spotify | lien_apple | lien_deezer | ordre
-  + optionnelles : real | compo | mix | rec  (cases à cocher : ce qui a été fait au studio)
+  + optionnelles : real | compo | mix | rec | master  (cases à cocher : ce qui a été fait au studio)
 
 - Une ligne = un morceau. Les lignes d'un même artiste sont regroupées.
 - « ordre » classe les artistes (plus petit = en premier, vide = à la fin).
@@ -40,7 +40,8 @@ UA = {"User-Agent": "maisonquasar-site-build"}
 PLATFORMS = [("lien_spotify", "Spotify"), ("lien_apple", "Apple Music"), ("lien_deezer", "Deezer")]
 # Ce qui a été fait au studio sur le morceau : colonne du Sheet, libellé court, libellé complet
 CREDITS = [("real", "Réal", "Réalisation"), ("compo", "Compo", "Composition"),
-           ("mix", "Mix", "Mixage"), ("rec", "Rec", "Enregistrement")]
+           ("mix", "Mix", "Mixage"), ("rec", "Rec", "Enregistrement"),
+           ("master", "Master", "Mastering")]
 TRUE_VALUES = {"true", "vrai", "x", "oui", "yes", "1", "✓", "✔"}
 PHOTO_MAX = 900  # px, côté le plus long
 
