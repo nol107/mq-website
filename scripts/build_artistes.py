@@ -209,7 +209,7 @@ def render(artists):
                 f'          <li class="mq-art-track"><span class="mq-art-track__title">{e(t["title"])}'
                 + ({"ep": '<span class="mq-art-track__type">EP</span>', "album": '<span class="mq-art-track__type">Album</span>'}.get(t["type"], ""))
                 + "</span>"
-                + (f'<span class="mq-art-track__credits"><span class="mq-art-track__credits-label">Au studio</span>'
+                + ('<span class="mq-art-track__credits">'
                    + "".join(f'<abbr title="{full}">{short}</abbr>' for short, full in t["credits"])
                    + "</span>" if t["credits"] else "")
                 + (f'<div class="mq-art-links">{links}</div>' if links else "") + "</li>"
