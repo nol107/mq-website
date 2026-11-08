@@ -40,7 +40,7 @@ UA = {"User-Agent": "maisonquasar-site-build"}
 PLATFORMS = [("lien_spotify", "Spotify"), ("lien_apple", "Apple Music"), ("lien_deezer", "Deezer")]
 # Ce qui a été fait au studio sur le morceau : colonne du Sheet, libellé court, libellé complet
 CREDITS = [("real", "Réal", "Réalisation"), ("compo", "Compo", "Composition"),
-           ("mix", "Mix", "Mixage"), ("rec", "Rec", "Enregistrement"),
+           ("rec", "Rec", "Enregistrement"), ("mix", "Mix", "Mixage"),
            ("master", "Master", "Mastering")]
 TRUE_VALUES = {"true", "vrai", "x", "oui", "yes", "1", "✓", "✔"}
 PHOTO_MAX = 900  # px, côté le plus long
