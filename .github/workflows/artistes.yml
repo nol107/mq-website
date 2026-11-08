@@ -43,6 +43,8 @@ jobs:
             git config user.name "maisonquasar-bot"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git commit -m "Artistes : mise à jour depuis le Google Sheet"
+            # Si main a bougé pendant la génération (autre clic, autre commit), on se recale avant d'envoyer
+            git pull --rebase -X theirs origin main || { git rebase --abort; git reset --hard origin/main; python scripts/build_artistes.py; git add -A artistes.html photos_artistes; git commit -m "Artistes : mise à jour depuis le Google Sheet"; }
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
