@@ -18,6 +18,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SHEET_ID: 1_-xbfAIFuSJ2PWuWxTEFGoIaCMG57nYn96qaxyotHsA
     steps:
       - uses: actions/checkout@v4
 
@@ -28,8 +30,6 @@ jobs:
       - run: pip install pillow
 
       - name: Générer la mosaïque depuis le Sheet
-        env:
-          SHEET_ID: 1_-xbfAIFuSJ2PWuWxTEFGoIaCMG57nYn96qaxyotHsA
         run: python scripts/build_artistes.py
 
       - name: Commit si quelque chose a changé
