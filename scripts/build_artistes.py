@@ -4,6 +4,7 @@
 
 Colonnes attendues (ligne 1) :
   artiste | lien_photo | titre | lien_spotify | lien_apple | lien_deezer | ordre
+  + optionnelles : real | compo | mix | rec  (cases à cocher : ce qui a été fait au studio)
 
 - Une ligne = un morceau. Les lignes d'un même artiste sont regroupées.
 - « ordre » classe les artistes (plus petit = en premier, vide = à la fin).
@@ -37,6 +38,10 @@ START = re.compile(r"<!-- ARTISTES:START.*?-->")
 END = "<!-- ARTISTES:END -->"
 UA = {"User-Agent": "maisonquasar-site-build"}
 PLATFORMS = [("lien_spotify", "Spotify"), ("lien_apple", "Apple Music"), ("lien_deezer", "Deezer")]
+# Ce qui a été fait au studio sur le morceau : colonne du Sheet, libellé court, libellé complet
+CREDITS = [("real", "Réal", "Réalisation"), ("compo", "Compo", "Composition"),
+           ("mix", "Mix", "Mixage"), ("rec", "Rec", "Enregistrement")]
+TRUE_VALUES = {"true", "vrai", "x", "oui", "yes", "1", "✓", "✔"}
 PHOTO_MAX = 900  # px, côté le plus long
 
 
@@ -79,6 +84,10 @@ def read_rows():
 def slugify(s):
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-") or "artiste"
+
+
+def is_true(v):
+    return (v or "").strip().lower() in TRUE_VALUES
 
 
 def safe_url(u):
@@ -141,7 +150,11 @@ def group(rows):
         except ValueError:
             pass
         if title:
-            a["tracks"].append({"title": title, **{k: safe_url(r.get(k, "")) for k, _ in PLATFORMS}})
+            a["tracks"].append({
+                "title": title,
+                "credits": [(short, full) for k, short, full in CREDITS if is_true(r.get(k))],
+                **{k: safe_url(r.get(k, "")) for k, _ in PLATFORMS},
+            })
     out = [artists[k] for k in order]
     out.sort(key=lambda a: (a["rank"] is None, a["rank"] or 0, a["first"]))
     return out
@@ -172,6 +185,9 @@ def render(artists):
             )
             tracks.append(
                 f'          <li class="mq-art-track"><span class="mq-art-track__title">{e(t["title"])}</span>'
+                + (f'<span class="mq-art-track__credits"><span class="mq-art-track__credits-label">Au studio</span>'
+                   + "".join(f'<abbr title="{full}">{short}</abbr>' for short, full in t["credits"])
+                   + "</span>" if t["credits"] else "")
                 + (f'<div class="mq-art-links">{links}</div>' if links else "") + "</li>"
             )
         parts.append(f'''      <details class="mq-art-card" name="artistes" id="{e(slug)}">

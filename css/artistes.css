@@ -175,3 +175,15 @@
 @media (min-width: 480px) and (max-width: 767px) {
   .mq-art__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+/* Ce qui a été fait au studio sur le morceau (colonnes real / compo / mix / rec du Sheet) */
+.mq-art-track__credits {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+}
+.mq-art-track__credits-label { color: rgba(255,255,255,0.6); margin-right: 2px; }
+.mq-art-track__credits abbr {
+  text-decoration: none; cursor: help;
+  padding: 3px 8px; border-radius: var(--radius-pill);
+  background: #1f1f23; color: #fff;
+}
