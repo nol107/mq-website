@@ -3,303 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Release Party Quasar Sessions Vol.2 – 21 novembre 2026 · Le ciNey, Paris</title>
-  <meta name="description" content="Release party de l'EP Quasar Sessions Vol.2 : 7 artistes en live le samedi 21 novembre 2026 au ciNey (Paris 18e), de 18h à minuit. Places dès 6 €." />
-  <meta name="robots" content="index, follow" />
+  <title>Release Party Quasar Sessions Vol.2 – Maison Quasar</title>
+  <meta name="description" content="Billetterie de la release party Quasar Sessions Vol.2 — samedi 21 novembre 2026 au ciNey, Paris 18e." />
+  <meta name="robots" content="noindex, follow" />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://maisonquasar.fr/release-party.html" />
-  <meta property="og:title" content="Quasar Sessions Vol.2 – Release Party · 21.11 · Le ciNey" />
-  <meta property="og:description" content="7 artistes en live, 18h – 00h, Paris 18e. Places dès 6 €." />
-  <meta property="og:image" content="https://maisonquasar.fr/Affiches/release-party-vol2.jpg" />
-  <meta property="og:locale" content="fr_FR" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://maisonquasar.fr/Affiches/release-party-vol2.jpg" />
-
-  <link rel="canonical" href="https://maisonquasar.fr/release-party.html" />
-  <link rel="icon" type="image/png" href="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" />
-  <link rel="preconnect" href="https://fonts.cdnfonts.com" />
-  <link rel="preload" as="image" href="Affiches/release-party-vol2.webp" />
-  <link rel="stylesheet" href="css/tokens.css?v=1" />
-  <link rel="stylesheet" href="css/quasar.css?v=1" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MusicEvent",
-    "name": "Quasar Sessions Vol.2 – Release Party",
-    "startDate": "2026-11-21T18:00:00+01:00",
-    "endDate": "2026-11-22T00:00:00+01:00",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "image": "https://maisonquasar.fr/Affiches/release-party-vol2.jpg",
-    "description": "Release party de l'EP Quasar Sessions Vol.2 : line-up 100 % live.",
-    "location": {
-      "@type": "Place",
-      "name": "Le ciNey",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "126-128 boulevard Ney",
-        "addressLocality": "Paris",
-        "postalCode": "75018",
-        "addressCountry": "FR"
-      }
-    },
-    "organizer": { "@type": "MusicGroup", "name": "Maison Quasar", "url": "https://maisonquasar.fr" },
-    "performer": [
-      { "@type": "MusicGroup", "name": "21Corazon" },
-      { "@type": "MusicGroup", "name": "Aïssa" },
-      { "@type": "MusicGroup", "name": "Dee Zen" },
-      { "@type": "MusicGroup", "name": "Jaleb" },
-      { "@type": "MusicGroup", "name": "Jeune Deep" },
-      { "@type": "MusicGroup", "name": "Jos'Art" },
-      { "@type": "MusicGroup", "name": "Noëma" }
-    ],
-    "offers": {
-      "@type": "Offer",
-      "url": "https://shotgun.live/events/quasar-session-vol-2-release-party",
-      "price": "6",
-      "priceCurrency": "EUR",
-      "availability": "https://schema.org/InStock"
-    }
-  }
-  </script>
-
-  <style>
-    /* One-screen page: everything (tickets, interest, consent) is visible on arrival. */
-    html, body { height: 100%; }
-    .rp-body { height: 100vh; height: 100svh; display: flex; flex-direction: column; overflow: hidden; }
-    @media (max-height: 560px) { .rp-body { height: auto; min-height: 100svh; overflow: visible; } }
-
-    .rp-top { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 32px; }
-    .rp-top .mq-nav__wm { color: #fff; text-decoration: none; }
-    .rp-top__link { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; }
-    .rp-top__link:hover { color: #fff; }
-
-    .rp { flex: 1 1 auto; min-height: 0; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 32px 16px;
-          display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
-    .rp__poster { align-self: stretch; height: 100%; min-height: 0; display: flex; align-items: center; justify-content: center; }
-    .rp__poster img { height: 100%; max-height: 100%; width: auto; max-width: 100%; aspect-ratio: 4 / 5; object-fit: contain; }
-
-    .rp__info { min-width: 0; }
-    .rp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-    .rp-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin: 0 0 clamp(8px, 1.5vh, 14px); }
-    .rp-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 6.2vh, 68px); line-height: 0.95; letter-spacing: 1.2px; text-transform: uppercase; margin: 0 0 clamp(12px, 2.4vh, 24px); }
-    .rp-facts { list-style: none; padding: 0; margin: 0 0 clamp(14px, 2.6vh, 26px); border-top: 1px solid var(--color-hairline-on-dark); }
-    .rp-facts li { display: flex; gap: 16px; padding: clamp(6px, 1.2vh, 11px) 0; border-bottom: 1px solid var(--color-hairline-on-dark); font-size: clamp(13px, 1.8vh, 15px); letter-spacing: 0.3px; line-height: 1.35; }
-    .rp-facts .k { flex: 0 0 76px; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.55); padding-top: 3px; }
-    .rp-facts a { color: #fff; }
-
-    .rp-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .rp-cta .q-btn { font-size: 15px; padding: clamp(14px, 2.2vh, 20px) 36px; }
-    /* tokens.css colours a:visited white and fades a:hover: keep the
-       button dark-on-light in every state. */
-    .rp-cta .q-btn, .rp-cta .q-btn:visited, .rp-cta .q-btn:hover, .rp-cta .q-btn:focus {
-      background: #fff; color: #000; text-decoration: none; opacity: 1;
-    }
-    .rp-cta .q-btn:hover { background: #dcdcf0; }
-
-    .rp-interest { margin-top: clamp(14px, 2.6vh, 26px); max-width: 520px; }
-    .rp-interest[hidden] { display: none; }
-    .rp-interest__p { font-size: 13px; color: rgba(255,255,255,0.75); margin: 0 0 10px; line-height: 1.45; }
-    .rp-interest__p strong { color: #fff; }
-    .rp-interest__toggle { display: none; background: none; border: 0; padding: 0; font: inherit; font-size: 12px; color: rgba(255,255,255,0.75); text-decoration: underline; cursor: pointer; }
-    .rp-form { display: flex; gap: 8px; flex-wrap: wrap; }
-    .rp-form input[type="email"] { flex: 1 1 200px; min-width: 0; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.4); border-radius: var(--radius-pill); padding: 12px 18px; font: inherit; font-size: 14px; }
-    .rp-form input[type="email"]:focus { outline: none; border-color: #fff; }
-    .rp-form .q-btn { padding: 12px 20px; }
-    .rp-form__consent { flex-basis: 100%; display: flex; gap: 8px; align-items: flex-start; font-size: 11px; color: rgba(255,255,255,0.6); line-height: 1.4; }
-    .rp-form__consent input { margin-top: 1px; accent-color: #fff; }
-    .rp-form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-    .rp-form__msg { flex-basis: 100%; font-size: 12px; margin: 0; min-height: 0; }
-    .rp-form__msg:empty { display: none; }
-    .rp-form__msg.is-ok { color: #fff; }
-    .rp-form__msg.is-err { color: #ff5a3c; }
-
-    .rp-bottom { flex: 0 0 auto; padding: 0 32px; }
-    .rp-bottom .mq-footer__consent { padding: 12px 0; border-bottom: 0; border-top: 1px solid var(--color-hairline-on-dark); }
-    .rp-legal { max-width: 1200px; margin: 0 auto; padding: 10px 0 14px; display: flex; justify-content: space-between; gap: 12px; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.45); border-top: 1px solid var(--color-hairline-on-dark); }
-    .rp-legal a { color: rgba(255,255,255,0.6); }
-
-    /* Phones and narrow screens: poster on top, shrinks to leave room for the CTA. */
-    @media (max-width: 900px) {
-      .rp-top { padding: 12px 18px; }
-      .rp { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; gap: 12px; padding: 0 18px 10px; align-items: stretch; }
-      .rp__poster img { height: 100%; }
-      .rp-title { font-size: clamp(24px, 4.2vh, 40px); margin-bottom: 10px; }
-      .rp-title br { display: none; }
-      .rp-eyebrow { margin-bottom: 6px; }
-      .rp-facts { margin-bottom: 12px; }
-      .rp-facts li { padding: 5px 0; font-size: 13px; }
-      .rp-facts .k { flex-basis: 56px; }
-      .rp-cta .q-btn { width: 100%; padding: 15px 24px; }
-      .rp-interest { margin-top: 10px; }
-      .rp-interest__p { font-size: 12px; margin-bottom: 6px; }
-      /* On phones the form opens on demand; the poster shrinks to make room. */
-      .rp-interest__toggle { display: inline; }
-      .rp-interest__p, .rp-interest__body { display: none; }
-      .rp-show-form .rp-interest__p, .rp-show-form .rp-interest__body { display: block; }
-      .rp-show-form .rp-interest__toggle { display: none; }
-      .rp-bottom { padding: 0 18px; }
-      .rp-bottom .mq-footer__consent { padding: 8px 0; gap: 8px; }
-      .rp-bottom .mq-footer__consent-text { font-size: 10px; line-height: 1.4; }
-      .rp-legal { display: none; }
-    }
-  </style>
-</head>
-<body class="rp-body">
-
-  <header class="rp-top">
-    <a class="mq-nav__wm" href="index.html">Maison Quasar</a>
-    <a class="rp-top__link" href="index.html">Le collectif →</a>
-  </header>
-
-  <main class="rp" id="billetterie">
-    <div class="rp__poster">
-      <img src="Affiches/release-party-vol2.webp" alt="Affiche Quasar Sessions Release Party — 21.11.26, Le ciNey : 21Corazon, Aïssa, Dee Zen, Jaleb, Jeune Deep, Jos'Art, Noëma" width="1080" height="1350" />
-    </div>
-
-    <div class="rp__info">
-      <h1 class="rp-sr">Quasar Sessions Vol.2 – Release Party, samedi 21 novembre 2026 au ciNey, Paris 18e</h1>
-
-      <div class="rp-cta">
-        <a class="q-btn q-btn--filled-cool" href="https://shotgun.live/events/quasar-session-vol-2-release-party?utm_source=site-mq" data-rp-buy>Sécurise ta place sur Shotgun</a>
-      </div>
-
-      <!-- Interest form: shown only once BREVO_ACTION is set in the script below. -->
-      <div class="rp-interest" data-rp-interest hidden>
-        <button class="rp-interest__toggle" type="button" data-rp-toggle>Pas encore sûr·e ? Être prévenu·e</button>
-        <p class="rp-interest__p"><strong>Pas encore sûr·e ?</strong> Laisse ton mail, on te prévient avant que les places partent.</p>
-        <div class="rp-interest__body">
-        <form class="rp-form" data-rp-form novalidate>
-          <label class="rp-form__hp" aria-hidden="true">Ne pas remplir <input type="text" name="email_address_check" tabindex="-1" autocomplete="off" /></label>
-          <input type="email" name="EMAIL" placeholder="ton@email.fr" autocomplete="email" required aria-label="Adresse email" />
-          <button class="q-btn q-btn--ghost-dark" type="submit">Me prévenir</button>
-          <label class="rp-form__consent">
-            <input type="checkbox" name="OPT_IN" value="1" required />
-            <span>J'accepte de recevoir des emails de Maison Quasar sur cette soirée et nos prochains événements. Désinscription à tout moment.</span>
-          </label>
-          <p class="rp-form__msg" data-rp-msg role="status" aria-live="polite"></p>
-        </form>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <div class="rp-bottom">
-    <div class="mq-footer__consent" data-consent-slot hidden></div>
-    <div class="rp-legal">
-      <span>© 2026 Maison Quasar · Paris</span>
-      <a href="mentions-legales.html">Mentions légales</a>
-    </div>
-  </div>
-
-  <script src="js/consent.js?v=5"></script>
+  <!-- Simple redirect to the Shotgun event page (the landing page is no longer
+       needed since Meta ads no longer point here). The Shotgun tracking link
+       puts where the visitor came from (?from= or ?utm_source= on this URL,
+       "site-mq" otherwise) in utm_source, so sales keep their origin in the
+       Shotgun orders export. No tracker is loaded here. -->
   <script>
-    /* ── Release party page: ticket link + tracking + interest form ──
-       CONFIG — the only values to edit:
-       - EVENT_URL     : Shotgun event page.
-       - SITE_SOURCE   : utm_source always sent to Shotgun (matches the
-                         Shotgun tracking link "site-mq", so every sale coming
-                         through this page shows up in the dashboard).
-                         Where the visitor came from (?utm_source=meta,
-                         ?from=insta…) is passed as utm_medium, visible in the
-                         order export.
-       - BREVO_ACTION  : the "action" URL of the Brevo form
-                         (https://xxxx.sibforms.com/serve/...). Leave empty to
-                         hide the interest block.
-    */
     (function () {
-      "use strict";
       var EVENT_URL = "https://shotgun.live/events/quasar-session-vol-2-release-party";
-      var SITE_SOURCE = "site-mq";
-      var BREVO_ACTION = "https://1e948468.sibforms.com/serve/MUIFACSeADJQFYmT5Xze7s-VPs9ssqe7tW2t3rxSsuJJNkx5LgXLF317fmyHLs8c1WOGd69aegeyBjP2Ipqg-5BAmUI5OQKw8FdpxdTDSHkTBuzdWxeEd2VqWCtzRZhPCCRDjRCxgncU4gHd_2Mi8sr4GoN8hFrV5UFQ7EOY6oYjc9SmUPc4v3PVP8WkGDYGFM-f0FS-Z4JKrOJRVA==";
-
-      function clean(v) { return (v || "").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 60); }
-
-      // utm_source is always the site's tracking link; the visitor's origin
-      // (/release-party.html?utm_source=meta or ?from=insta) becomes utm_medium.
       var params = new URLSearchParams(window.location.search);
-      var source = clean(params.get("utm_source") || params.get("from")) || "direct";
-      var ticketUrl = EVENT_URL + "?utm_source=" + encodeURIComponent(SITE_SOURCE) +
-        "&utm_medium=" + encodeURIComponent(source);
-      // Keep the ad context on the Shotgun side: utm_campaign shows in the
-      // order export, and fbclid lets Shotgun's own pixel set its _fbc
-      // click-ID cookie, so a purchase can be tied back to the Meta ad click.
+      function clean(v) {
+        return (v || "").trim().toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
+      }
+      // The Shotgun export shows our utm_source as-is, but its "UTM MEDIUM"
+      // column only ever holds app/website, so the visitor's origin goes in
+      // utm_source (like /billetterie). No origin -> "site-mq".
+      var origin = clean(params.get("from") || params.get("utm_source")) || "site-mq";
+      var target = EVENT_URL + "?utm_source=" + encodeURIComponent(origin) + "&utm_medium=site-mq";
       var campaign = clean(params.get("utm_campaign"));
-      if (campaign) ticketUrl += "&utm_campaign=" + encodeURIComponent(campaign);
+      if (campaign) target += "&utm_campaign=" + encodeURIComponent(campaign);
       var fbclid = (params.get("fbclid") || "").replace(/[^A-Za-z0-9_.-]/g, "").slice(0, 500);
-      if (fbclid) ticketUrl += "&fbclid=" + encodeURIComponent(fbclid);
-
-      var buyLinks = document.querySelectorAll("[data-rp-buy]");
-      buyLinks.forEach(function (a) {
-        a.href = ticketUrl;
-        a.addEventListener("click", function (e) {
-          if (typeof window.mqTrack !== "function" || !window.mqHasConsent || !window.mqHasConsent()) return;
-          // Give the pixel / GA hit a moment to leave before navigating.
-          e.preventDefault();
-          window.mqTrack("rp_click_billetterie", { source: source, placement: a.closest(".mq-nav") ? "nav" : "page" },
-            { meta: "RP_ClickBilletterie" });
-          // Shared "intent" event (ticket click OR email sign-up) → one
-          // custom conversion to optimise the ads on.
-          window.mqTrack("rp_intent", { source: source, action: "billetterie" }, { meta: "RP_Intent" });
-          setTimeout(function () { window.location.href = ticketUrl; }, 300);
-        });
-      });
-
-      // Page view as a custom Meta event (never ViewContent: see js/consent.js).
-      function trackView() { window.mqTrack && window.mqTrack("rp_pageview", { source: source }, { meta: "RP_PageView" }); }
-      if (window.mqHasConsent && window.mqHasConsent()) { trackView(); }
-      else { document.addEventListener("mq:consent-granted", trackView, { once: true }); }
-
-      // Interest form → Brevo.
-      var block = document.querySelector("[data-rp-interest]");
-      var form = document.querySelector("[data-rp-form]");
-      var msg = document.querySelector("[data-rp-msg]");
-      if (!BREVO_ACTION || !block || !form) return;
-      block.hidden = false;
-      var toggle = document.querySelector("[data-rp-toggle]");
-      if (toggle) toggle.addEventListener("click", function () {
-        document.body.classList.add("rp-show-form");
-        form.elements.EMAIL.focus();
-      });
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        msg.className = "rp-form__msg";
-        var email = form.elements.EMAIL.value.trim();
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          msg.textContent = "Adresse email invalide.";
-          msg.classList.add("is-err");
-          return;
-        }
-        if (!form.elements.OPT_IN.checked) {
-          msg.textContent = "Coche la case pour qu'on puisse t'écrire.";
-          msg.classList.add("is-err");
-          return;
-        }
-        var data = new FormData(form);
-        data.append("locale", "fr");
-        data.append("html_type", "simple");
-        var btn = form.querySelector("button[type=submit]");
-        btn.disabled = true;
-        // Brevo does not send CORS headers: the response is opaque, so a
-        // resolved fetch means "sent", not "confirmed".
-        fetch(BREVO_ACTION, { method: "POST", mode: "no-cors", body: data })
-          .then(function () {
-            msg.textContent = "C'est noté ! On te tient au courant de l'avancée de la billetterie.";
-            msg.classList.add("is-ok");
-            form.reset();
-            window.mqTrack && window.mqTrack("rp_lead", { source: source }, { meta: "Lead" });
-            window.mqTrack && window.mqTrack("rp_intent", { source: source, action: "email" }, { meta: "RP_Intent" });
-          })
-          .catch(function () {
-            msg.textContent = "Oups, l'envoi a échoué. Réessaie dans un instant.";
-            msg.classList.add("is-err");
-          })
-          .finally(function () { btn.disabled = false; });
-      });
+      if (fbclid) target += "&fbclid=" + encodeURIComponent(fbclid);
+      window.location.replace(target);
     })();
   </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=https://shotgun.live/events/quasar-session-vol-2-release-party?utm_source=site-mq&amp;utm_medium=noscript" />
+  </noscript>
+
+  <link rel="icon" type="image/png" href="Logos/MAISON%20QUASAR%20Q%20LOGO%2001.png" />
+  <style>
+    body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #000; color: #fff; font-family: system-ui, sans-serif; text-align: center; padding: 24px; box-sizing: border-box; }
+    a { color: #fff; }
+  </style>
+</head>
+<body>
+  <p>Redirection vers la billetterie…<br />
+    <small>Si rien ne se passe, <a href="https://shotgun.live/events/quasar-session-vol-2-release-party?utm_source=site-mq&amp;utm_medium=fallback">cliquez ici</a>.</small>
+  </p>
 </body>
 </html>
