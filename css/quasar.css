@@ -288,6 +288,24 @@ button { font-family: inherit; }
   .mq-section-head { padding: 72px 18px 32px; }
 }
 
+/* Short text under a section title, explaining what the section is */
+.mq-section-intro {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px 40px;
+}
+.mq-section-intro p {
+  max-width: 720px;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.75);
+}
+@media (max-width: 767px) {
+  .mq-section-intro { padding: 0 18px 28px; }
+  .mq-section-intro p { font-size: 15px; }
+}
+
 /* === Sessions list (numbered editorial rows) =================== */
 .mq-sessions {
   max-width: 1200px;
