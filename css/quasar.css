@@ -1313,3 +1313,5 @@ button { font-family: inherit; }
   max-width: 1000px;
   text-wrap: balance;
 }
+a.q-livepill { text-decoration: none; transition: background .2s ease, border-color .2s ease; }
+a.q-livepill:hover, a.q-livepill:focus-visible { background: rgba(255,255,255,0.12); border-color: #fff; }
